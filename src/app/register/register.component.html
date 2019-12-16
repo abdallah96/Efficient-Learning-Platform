@@ -1,0 +1,44 @@
+<div class="login-area">
+    <div class="bg-image">
+        <div class="login-signup">
+            <div class="container">
+<div id="register" class="tab-pane">
+    <div class="login-inner">
+         <div class="title">
+             <h1>Welcome to <span>E-Learning!</span></h1>
+         </div>
+         <div class="login-form">
+             <form [formGroup]="userService.formModel" autocomplete="off" (submit)="onSubmit()">
+                 <div class="form-details">
+                     <label class="user">
+                         <input  formControlName="username" placeholder="Username" id="username" >
+                     </label>
+                     <label class="text-danger" *ngIf="userService.formModel.get('username').touched && userService.formModel.get('username').errors?.required">This field is required</label>
+                     <label class="user">
+                            <input type="text" formControlName="name" placeholder="Name" id="username" required>
+                    </label>
+                    <label class="text-danger" *ngIf="userService.formModel.get('name').touched && userService.formModel.get('name').errors?.required">This field is required</label>
+                    <label class="user">
+                            <input type="text" name="surname" formControlName="surname" placeholder="Surname" id="username" required>
+                    </label>
+                    <label class="text-danger" *ngIf="userService.formModel.get('surname').touched && userService.formModel.get('surname').errors?.required">This field is required</label>
+                     <label class="mail" data-error="Invalid Email">
+                         <input type="email" name="email"  formControlName="email" placeholder="Email" id="username" required>
+                     </label>
+                     <label class="text-danger" *ngIf="userService.formModel.get('email').touched && userService.formModel.get('email').errors?.email">Invalid mail address</label>
+                     <div formGroupName ="Passwords">
+                        <label class="pass">
+                            <input type="password" name="password"  formControlName="password" placeholder="Password" id="username" required>
+                        </label>
+                        <label class="text-danger" *ngIf="userService.formModel.get('Passwords.password').touched && userService.formModel.get('Passwords.password').errors?.minlength">Minimum 4 character required</label>
+                        <label class="pass">
+                            <input type="password" name="password" formControlName="confirmPassword" placeholder="Confirm Password" id="username" required>
+                        </label>
+                        <label class="text-danger" *ngIf="userService.formModel.get('Passwords.confirmPassword').touched && userService.formModel.get('Passwords.confirmPassword').errors?.passwordMismatch">Confirm Password does not match</label>
+                     </div>
+                 </div>
+                 <button type="submit" [disabled]="!userService.formModel.valid" class="form-btn">Register</button>
+             </form>
+         </div>
+     </div>
+ </div>

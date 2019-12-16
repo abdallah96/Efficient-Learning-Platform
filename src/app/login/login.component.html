@@ -1,0 +1,20 @@
+        <div class="login-inner">
+            <div class="title">
+                <h1>Welcome to <span>E-Learning!</span></h1>
+            </div>
+            <div class="login-form">
+                <form #form = 'ngForm' autocomplete="off" (submit)="onSubmit(form)">
+                    <div class="form-details">
+                        <label class="mail">
+                            <input type="email" #email ="ngModel" name="email" [(ngModel)]="formModel.email" placeholder="Email" id="email" required>
+                        </label>
+                        <label class="pass">
+                            <input type="password" #email="ngModel" name="password" [(ngModel)]="formModel.password" placeholder="Password" id="password" required>
+                        </label>
+                    </div>
+                    <button type="submit" class="form-btn" [disabled]="form.invalid">Login</button>
+                    <button type="submit" class="form-btn" routerLink="/register">Register</button>
+
+                </form>
+            </div>
+        </div>
