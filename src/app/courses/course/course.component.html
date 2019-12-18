@@ -1,0 +1,17 @@
+<form #form ="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <input type="hidden" name="id" value="service.formData.id">
+        <div class="form-group">
+                <label>Course Name</label>
+                <input type="text" name="name" #name="ngModel" [(ngModel)]="service.formData.name" class="form-control" required>      
+                <!-- <div class="validation-error" *ngIf="name.invalid && name.touched">This field is required</label> -->
+    
+            </div>
+        <div class="form-group">
+                <label>Programming Type</label>
+                <input type="programmingType" name="programmingType" #surname="ngModel" [(ngModel)]="service.formData.programmingType" class="form-control" required>      
+                <!-- <div class="validation-error" *ngIf="surname.invalid && surname.touched">This field is required</label> -->
+        </div>
+        <div class="form-group">
+            <button type="submit"[disabled]="form.invalid" class="btn btn-primary btn-lg btn-block" >SUBMIT</button>
+        </div>
+    </form>

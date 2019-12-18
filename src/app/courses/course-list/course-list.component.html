@@ -2,14 +2,16 @@
         <thead>
                 <tr>
                     <th scope="col"> Name</th>
-                    <th scope="col">Surname</th>
+                    <th scope="col">Programming Type</th>
+                    <th scope="col">Given Classroom</th>
                     <th scope="col">Actions</th>
                 </tr>
         </thead>
         <tbody>
-                <tr *ngFor="let std of service.list">
-                        <td>{{std.name}}</td>
-                        <td>{{std.surname}}</td>
+                <tr *ngFor="let c of service.list">
+                        <td>{{c.name}}</td>
+                        <td>{{c.programmingType}}</td>
+                        <td>{{c.givenClassrooms}}</td>
                         <td><button class="btn btn-sm btn-outline-danger"(click)="onDelete(std.id)">Delete</button></td>
                     </tr>
         </tbody>     

@@ -19,25 +19,19 @@ export class RegisterComponent implements OnInit {
  
   onSubmit(){
     this.userService.registerUser().subscribe(
-      (res:any) =>{
-        if(res.Success){
-          this.userService.formModel.reset();
-          this.toastr.success('You have succesfully registered','Registration Successful ')
-        }else{
-          res.errors.forEach(element => {
-            switch (element.code) {
-              case 'DuplicateUserName':
-              this.toastr.error('Username is already taken','Registration Failed');
-                break;    
-              default:
-                  this.toastr.error(element.description,'Registration Failed');
-                  break;
-            }
-          });
-        }
+      (res:any) => {
+      //   console.log(res);
+      //   if(res.Success){
+        this.userService.formModel.reset();
+        this.toastr.success('You have succesfully been registered','Registration Successful ')
+        // }else{
+        //   err =>{
+        //     this.toastr.error(err.error, 'Registration failed');
+        //   }
+        // }
       },
-      err =>{
-        console.log(err)
+      err => {
+        this.toastr.error(err.error, 'Registration failed');
       }
     )
   }

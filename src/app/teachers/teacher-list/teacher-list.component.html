@@ -1,7 +1,22 @@
-<table class="table table-hover">
-    <tr *ngFor="let teach of service.list">
-        <td (click)="updateForm(teach)">{{teach.name}}</td>
-        <td (click)="updateForm(teach)">{{teach.surname}}</td>
-        <td><button class="btn btn-sm btn-outline-danger"></button></td>
-    </tr>
+<table class="table table-bordered">
+    <thead>
+            <tr>
+                <th scope="col"> Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Actions</th>
+
+            </tr>
+    </thead>
+    <tbody>
+            <tr *ngFor="let teach of service.list">
+                    <td (click)="updateForm(teach)">{{teach.name}}</td>
+                    <td (click)="updateForm(teach)">{{teach.surname}}</td>
+                    <td (click) ="updateForm(teach)">{{teach.email}}</td>
+
+                    <td>
+                        <button class=" text-danger" (click)="onDelete(teach.id)">Delete</button>
+                    </td>
+            </tr>
+    </tbody>
 </table>

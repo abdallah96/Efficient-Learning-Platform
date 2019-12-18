@@ -30,13 +30,30 @@ export class TeacherComponent implements OnInit {
       confirmPassword:''
     }
   }
+
   onSubmit(form : NgForm){
-
+    if(form.value.id ==0)
     this.insertRecord(form);
+    else
+    this.updateRecord(form)
   }
+  onDelete(form : NgForm){
+    this.updateRecord(form);
+  }
+   
   insertRecord(form:NgForm){
-
     this.service.CreateTeacher(form.value).subscribe(res=>{
+      this.resetForm(form);
+      this.toastr.success('Teacher was created sucessfully'),
+      err =>{
+        console.log(err);
+      }
+      
+    });
+  }
+  updateRecord(form:NgForm){
+
+    this.service.UpdateTeacher(form.value).subscribe(res=>{
       this.resetForm(form);
       this.toastr.success('Teacher was created sucessfully'),
       err =>{

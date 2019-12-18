@@ -36,7 +36,7 @@ export class StudentComponent implements OnInit {
       this.toatr.success('Student Created Successfully')
     },
     err =>{
-      console.log(err);
+    this.toatr.error(err.error+'Failure')  
   })
     }
  

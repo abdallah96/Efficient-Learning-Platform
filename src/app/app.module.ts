@@ -26,6 +26,11 @@ import { StudentsComponent } from './students/students.component';
 import { StudentComponent } from './students/student/student.component';
 import { StudentListComponent } from './students/student-list/student-list.component';
 import { StudentService } from './shared/student.service';
+import { CoursesComponent } from './courses/courses.component';
+import { CourseComponent } from './courses/course/course.component';
+import { CourseListComponent } from './courses/course-list/course-list.component';
+import { CourseService } from './shared/course.service';
+
 
 
 
@@ -42,7 +47,10 @@ import { StudentService } from './shared/student.service';
     TeacherListComponent,
     StudentsComponent,
     StudentComponent,
-    StudentListComponent,    
+    StudentListComponent,
+    CoursesComponent,
+    CourseComponent,
+    CourseListComponent,
     
   ],
   imports: [
@@ -61,10 +69,11 @@ import { StudentService } from './shared/student.service';
       {path: 'teachers', component: TeachersComponent},
       {path: 'students',component: StudentsComponent},
       {path:'admin', component: AdminComponent},
+      {path:'course', component: CoursesComponent},
 
     ])
   ],
-  providers: [ TeacherService,UserService,StudentService],
+  providers: [TeacherService,UserService,StudentService, CourseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
