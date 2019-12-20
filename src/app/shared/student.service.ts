@@ -15,7 +15,7 @@ readonly rootURL='https://eflearning.azurewebsites.net';
   postStudent(formData:StudentService){
     return this.http.post(this.rootURL +'/api/User/CreateStudent', formData);
   }
-  deleteStudent(id){
+  DeleteStudent(id){
     return this.http.delete(this.rootURL +'/api/User/DeleteUser/'+id);
   }
   GetAllStudents(){

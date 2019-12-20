@@ -9,14 +9,11 @@
             </tr>
     </thead>
     <tbody>
-            <tr *ngFor="let teach of service.list">
-                    <td (click)="updateForm(teach)">{{teach.name}}</td>
-                    <td (click)="updateForm(teach)">{{teach.surname}}</td>
-                    <td (click) ="updateForm(teach)">{{teach.email}}</td>
-
-                    <td>
-                        <button class=" text-danger" (click)="onDelete(teach.id)">Delete</button>
-                    </td>
+            <tr *ngFor="let t of service.list">
+                    <td (click)="updateForm(t)">{{t.name}}</td>
+                    <td (click)="updateForm(t)">{{t.surname}}</td>
+                    <td (click)="updateForm(t)">{{t.email}}</td>
+                    <td><button class="btn btn-sm btn-outline-danger"(click)="onDelete(t.id)">Delete</button></td>
             </tr>
     </tbody>
 </table>

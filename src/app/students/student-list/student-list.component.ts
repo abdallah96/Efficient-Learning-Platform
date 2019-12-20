@@ -16,8 +16,8 @@ export class StudentListComponent implements OnInit {
 
   }
   onDelete(id){
-    this.service.deleteStudent(id).subscribe(res =>{
-      this.toastr.warning('student has been deleted')
+    this.service.DeleteStudent(id).subscribe(res =>{
+      this.toastr.warning('the teacher has been deleted')
     },
       err=>{
         console.log(err)

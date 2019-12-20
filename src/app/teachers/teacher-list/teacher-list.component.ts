@@ -19,13 +19,14 @@ export class TeacherListComponent implements OnInit {
     updateForm(teach: Teacher){
     this.service.formData = Object.assign({}, teach);
     }
-    
-    deleteTeacher(id){
+    onDelete(id){
       this.service.deleteTeacher(id).subscribe(res =>{
-        this.toastr.warning('student has been deleted')
+        this.toastr.warning('the teacher has been deleted')
       },
         err=>{
           console.log(err)
         })
     }
+    
+    
 }

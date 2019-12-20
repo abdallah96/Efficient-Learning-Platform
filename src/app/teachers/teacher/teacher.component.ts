@@ -32,14 +32,13 @@ export class TeacherComponent implements OnInit {
   }
 
   onSubmit(form : NgForm){
-    if(form.value.id ==0)
+    if(this.service.formData.id = null)
     this.insertRecord(form);
     else
-    this.updateRecord(form)
-  }
-  onDelete(form : NgForm){
     this.updateRecord(form);
+   
   }
+ 
    
   insertRecord(form:NgForm){
     this.service.CreateTeacher(form.value).subscribe(res=>{

@@ -19,13 +19,20 @@ export class CourseComponent implements OnInit {
     if(form != null)
     form.resetForm();
     this.service.formData ={
-      id: null,
+      id: 0,
       name :'',
       programmingType:'',    
     }
   }
   onSubmit(form: NgForm){
-    this.service.postClass(form.value).subscribe(
+    if(this.service.formData.id == 0)
+    this.insertRecord(form);
+    else
+    this.updateRecord(form);
+  }
+ 
+  insertRecord(form: NgForm){
+    this.service.postClass().subscribe(
       res=>{
         this.resetForm(form);
         this.toastr.success('Course was created Successfully')
@@ -33,5 +40,17 @@ export class CourseComponent implements OnInit {
       err =>{
       this.toastr.error(err.error+'Failure')  
     })
+  }
+  updateRecord(form:NgForm){
+
+    this.service.UpdateCourse().subscribe(
+      res=>{
+      this.resetForm(form);
+      this.toastr.success('Course was updated sucessfully'),
+      err =>{
+        console.log(err);
+      }
+      
+    });
   }
 }

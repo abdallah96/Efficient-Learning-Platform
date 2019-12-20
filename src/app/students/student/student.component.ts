@@ -30,14 +30,18 @@ export class StudentComponent implements OnInit {
     }
   }
   onSubmit(form: NgForm){
-  this.service.postStudent(form.value).subscribe(
-    res=>{
-      this.resetForm(form);
-      this.toatr.success('Student Created Successfully')
-    },
-    err =>{
-    this.toatr.error(err.error+'Failure')  
-  })
+    this.insertRecord(form);
+    }
+    
+    insertRecord(form: NgForm){
+      this.service.postStudent(form.value).subscribe(
+        res=>{
+          this.resetForm(form);
+          this.toatr.success('Student Created Successfully')
+        },
+        err =>{
+        this.toatr.error(err.error+'Failure')  
+      })
     }
  
 }

@@ -4,16 +4,18 @@
                     <th scope="col"> Name</th>
                     <th scope="col">Programming Type</th>
                     <th scope="col">Given Classroom</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">Delete</th>
+                    <!-- <th scope="col">Update</th> -->
                 </tr>
         </thead>
         <tbody>
                 <tr *ngFor="let c of service.list">
-                        <td>{{c.name}}</td>
-                        <td>{{c.programmingType}}</td>
-                        <td>{{c.givenClassrooms}}</td>
-                        <td><button class="btn btn-sm btn-outline-danger"(click)="onDelete(std.id)">Delete</button></td>
-                    </tr>
+                        <td (click)="updateForm(c)">{{c.name}}</td>
+                        <td (click)="updateForm(c)">{{c.programmingType}}</td>
+                        <td (click)="updateForm(c)">{{c.givenClassrooms}}</td>
+                        <td><button class="btn btn-sm btn-outline-danger"(click)="onDelete(c.id)">Delete</button></td>
+                        <!-- <td><button class="btn btn-sm btn-success"(click)="onUpdate(c.id)">Update</button></td> -->
+                </tr>
         </tbody>     
     </table>
    
