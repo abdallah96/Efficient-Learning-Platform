@@ -17,8 +17,8 @@ export class TeacherService {
     return this.http.post(this.rootURL +'/api/User/CreateTeacher', formData);
   }
 
-  UpdateTeacher(formData: Teacher){
-    return this.http.put(this.rootURL +'/api/User/UpdateUser', formData);
+  UpdateTeacher(){
+    return this.http.put(this.rootURL +'/api/User/UpdateUser', this.formData);
   }
   deleteTeacher(id){
     return this.http.delete(this.rootURL +'/api/User/DeleteUser/'+ id)

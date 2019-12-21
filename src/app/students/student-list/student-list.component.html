@@ -9,9 +9,9 @@
         </thead>
         <tbody>
                 <tr *ngFor="let s of service.list">
-                        <td>{{s.name}}</td>
-                        <td>{{s.surname}}</td>
-                        <td>{{s.email}}</td>
+                        <td (click)="updateForm(s)">{{s.name}}</td>
+                        <td (click)="updateForm(s)">{{s.surname}}</td>
+                        <td (click)="updateForm(s)">{{s.email}}</td>
                         <td><button class="btn btn-sm btn-outline-danger"(click)="onDelete(s.id)">Delete</button></td>
                     </tr>
         </tbody>     

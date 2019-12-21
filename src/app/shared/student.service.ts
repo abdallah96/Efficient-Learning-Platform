@@ -22,4 +22,7 @@ readonly rootURL='https://eflearning.azurewebsites.net';
     this.http.get(this.rootURL + '/api/User/GetAllStudents')
     .toPromise().then(res=> this.list = res as Student[]);
   }
+  UpdateStudent(){
+    return this.http.put(this.rootURL +'/api/User/UpdateUser', this.formData);
+  }
 }

@@ -20,7 +20,7 @@ export class StudentComponent implements OnInit {
     if(form != null)
     form.resetForm();
     this.service.formData ={
-      id: null,
+      id: 0,
       name :'',
       surname:'',
       username :'',
@@ -30,7 +30,10 @@ export class StudentComponent implements OnInit {
     }
   }
   onSubmit(form: NgForm){
+    if(this.service.formData.id == 0)
     this.insertRecord(form);
+    else
+    this.updateRecord(form);
     }
     
     insertRecord(form: NgForm){
@@ -42,6 +45,18 @@ export class StudentComponent implements OnInit {
         err =>{
         this.toatr.error(err.error+'Failure')  
       })
+    }
+    
+    updateRecord(form:NgForm){
+      this.service.UpdateStudent().subscribe(
+        res=>{
+        this.resetForm(form);
+        this.toatr.success('Student was updated sucessfully'),
+        err =>{
+          console.log(err);
+        }
+        
+      });
     }
  
 }

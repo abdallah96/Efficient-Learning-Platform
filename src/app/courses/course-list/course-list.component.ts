@@ -27,7 +27,7 @@ export class CourseListComponent implements OnInit {
           console.log(err)
         })
     }
-    // 
+    
     
 
 }

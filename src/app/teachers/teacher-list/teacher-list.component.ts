@@ -16,9 +16,10 @@ export class TeacherListComponent implements OnInit {
       this.service.GetAllTeachers();
     }
 
-    updateForm(teach: Teacher){
-    this.service.formData = Object.assign({}, teach);
+    updateForm(t: Teacher){
+    this.service.formData = Object.assign({}, t);
     }
+
     onDelete(id){
       this.service.deleteTeacher(id).subscribe(res =>{
         this.toastr.warning('the teacher has been deleted')
