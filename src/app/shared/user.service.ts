@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import{HttpClient, HttpHeaders} from '@angular/common/http';
-import {Response} from '@angular/http';
+import {Response, RequestOptions} from '@angular/http';
 import { observable } from 'rxjs';
 import{map} from 'rxjs/operators';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
@@ -50,10 +50,13 @@ comparePasswords(fb: FormGroup){
     return this.http.post(this.BaseURI + '/api/Account/AccessToken',formData);
   }
 
-  // getCurreentUser(email){
-  //   return this.http.post(this.BaseURI + '/api/GetUSerByEmail',email);
-  // }
-  // getUser(){
+  getCurrentUser(id){
+    // let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    // let options = new RequestOptions({ headers: });
+    console.log(id);
+    return this.http.get(this.BaseURI + '/api/User/GetUserByIdWithRoleAsync/'+ id);
+  }
+  // getCurrentUser(email){
   //   var tokenHeader = new HttpHeaders({'Authorization':'Bearer' + localStorage.getItem('token')})
   //   return this.http.get(this.BaseURI + '/api/Account/CurrentUser',{headers: tokenHeader});
   // }

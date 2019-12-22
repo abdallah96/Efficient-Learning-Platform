@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../shared/user.service';
 import { Router } from '@angular/router';
@@ -9,13 +9,26 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
+@Injectable({
+  providedIn: 'root'
+})
+
 export class LoginComponent implements OnInit {
-formModel = {
-  email:'',
-  password:''
+  userDetails: any;
   
-}
-  constructor(private service: UserService, private router:Router, private toastr: ToastrService) { }
+  formModel = {
+    email:'',
+    password:''
+  }
+  
+  constructor(private service: UserService, private router:Router, private toastr: ToastrService) {
+    this.service.getCurrentUser(this.userDetails).subscribe(
+      (res:any) => {
+        this.userDetails = res;
+      }
+    );
+  }
 
   ngOnInit() {
     if(localStorage.getItem('token')!=null)
@@ -27,19 +40,20 @@ formModel = {
       (res:any)=>{
         localStorage.setItem('token',res.token);//save jwt inside browser local storage
         this.router.navigateByUrl('/home');
-        // this.service.getCurrentUser(form.value.email).subscribe(
-        //   (res:any) => {
-        //     if(res.role === 'Teacher') {
-        //       this.router.navigateByUrl('/teachers');
-        //     }
-        //     else if(res.role === 'Student') {
-        //       this.router.navigateByUrl('/students');
-        //     }
-        //   },
-        //   err => {
-        //     this.router.navigateByUrl('/home');
-        //   }
-        // )
+        this.service.getCurrentUser(form.value.id).subscribe(
+          (res:any) => {
+            this.userDetails = res;
+            if(res.role == 'Teacher') {
+              this.router.navigateByUrl('/classroom');
+            }
+            else if(res.role == 'Student') {
+              this.router.navigateByUrl('/home');
+            }
+          },
+          err => {
+            this.router.navigateByUrl('/home');
+          }
+        )
       },
       err => {
         this.toastr.error(err.error, 'Authentication failed');

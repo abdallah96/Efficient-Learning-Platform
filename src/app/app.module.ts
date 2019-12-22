@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import{ReactiveFormsModule} from '@angular/forms'
+import{AngularFontAwesomeModule} from 'angular-font-awesome'
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -30,6 +31,9 @@ import { CoursesComponent } from './courses/courses.component';
 import { CourseComponent } from './courses/course/course.component';
 import { CourseListComponent } from './courses/course-list/course-list.component';
 import { CourseService } from './shared/course.service';
+import { ClassroomComponent } from './classroom/classroom.component';
+import { ClassroomService } from './shared/classroom.service';
+
 
 
 
@@ -51,12 +55,15 @@ import { CourseService } from './shared/course.service';
     CoursesComponent,
     CourseComponent,
     CourseListComponent,
+    ClassroomComponent,
+    
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    AngularFontAwesomeModule,
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
@@ -70,10 +77,11 @@ import { CourseService } from './shared/course.service';
       {path: 'students',component: StudentsComponent},
       {path:'admin', component: AdminComponent},
       {path:'course', component: CoursesComponent},
+      {path:'classroom', component:ClassroomComponent}
 
     ])
   ],
-  providers: [TeacherService,UserService,StudentService, CourseService],
+  providers: [TeacherService,UserService,StudentService, CourseService, ClassroomService, LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

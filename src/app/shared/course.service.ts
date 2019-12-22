@@ -15,6 +15,11 @@ readonly rootURL='https://eflearning.azurewebsites.net';
 
     return this.http.post(this.rootURL +'/api/Course/Create', this.formData);
   }
+  // get list for classroom
+  getCourseList(){
+    return this.http.get(this.rootURL + '/api/Course/GetAll');
+  }
+  //
   getAllCourses(){
     this.http.get(this.rootURL + '/api/Course/GetAll')
     .toPromise().then(res=> this.list = res as Course[]);
