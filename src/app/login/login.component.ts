@@ -16,18 +16,17 @@ import { ToastrService } from 'ngx-toastr';
 
 export class LoginComponent implements OnInit {
   userDetails: any;
-  
   formModel = {
     email:'',
     password:''
   }
   
   constructor(private service: UserService, private router:Router, private toastr: ToastrService) {
-    this.service.getCurrentUser(this.userDetails).subscribe(
-      (res:any) => {
-        this.userDetails = res;
-      }
-    );
+    // this.service.getCurrentUser(this.formModel.email).subscribe(
+    //   (res:any) => {
+    //     this.userDetails = res;
+    //   }
+    // )
   }
 
   ngOnInit() {
@@ -39,15 +38,18 @@ export class LoginComponent implements OnInit {
     this.service.login(form.value).subscribe(
       (res:any)=>{
         localStorage.setItem('token',res.token);//save jwt inside browser local storage
-        this.router.navigateByUrl('/home');
-        this.service.getCurrentUser(form.value.id).subscribe(
+        // this.router.navigateByUrl('/home');
+        this.service.getCurrentUser().subscribe(
           (res:any) => {
             this.userDetails = res;
-            if(res.role == 'Teacher') {
+            if(res.roleName == 'Teacher') {
               this.router.navigateByUrl('/classroom');
             }
-            else if(res.role == 'Student') {
+            else if(res.roleName == 'Student') {
               this.router.navigateByUrl('/home');
+            }
+            else if(res.roleName == 'Admin'){
+              this.router.navigateByUrl('/admin')
             }
           },
           err => {

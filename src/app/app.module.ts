@@ -73,11 +73,11 @@ import { ClassroomService } from './shared/classroom.service';
       {path: 'login', component: LoginComponent},
       {path:'home', component: HomeComponent,canActivate:[AuthGuard]},
       {path: 'register', component: RegisterComponent},
-      {path: 'teachers', component: TeachersComponent},
-      {path: 'students',component: StudentsComponent},
-      {path:'admin', component: AdminComponent},
-      {path:'course', component: CoursesComponent},
-      {path:'classroom', component:ClassroomComponent}
+      {path: 'teachers', component: TeachersComponent,canActivate:[AuthGuard]},
+      {path: 'students',component: StudentsComponent,canActivate:[AuthGuard]},
+      {path:'admin', component: AdminComponent,canActivate:[AuthGuard]},
+      {path:'course', component: CoursesComponent,canActivate:[AuthGuard]},
+      {path:'classroom', component:ClassroomComponent,canActivate:[AuthGuard]}
 
     ])
   ],

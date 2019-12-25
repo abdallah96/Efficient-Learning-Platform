@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Teacher } from './teacher.model';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +14,37 @@ export class TeacherService {
   constructor(private http: HttpClient) { }
 
   CreateTeacher(formData: Teacher){
-    return this.http.post(this.rootURL +'/api/User/CreateTeacher', formData);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    return this.http.post(this.rootURL +'/api/User/CreateTeacher', formData,httpOptions);
   }
 
   UpdateTeacher(){
-    return this.http.put(this.rootURL +'/api/User/UpdateUser', this.formData);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    return this.http.put(this.rootURL +'/api/User/UpdateUser', this.formData,httpOptions);
   }
   deleteTeacher(id){
-    return this.http.delete(this.rootURL +'/api/User/DeleteUser/'+ id)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    return this.http.delete(this.rootURL +'/api/User/DeleteUser/'+ id,httpOptions)
   }
   GetAllTeachers(){
-    this.http.get(this.rootURL + '/api/User/GetAllTeachers')
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    this.http.get(this.rootURL + '/api/User/GetAllTeachers',httpOptions)
     .toPromise().then(res=> this.list = res as Teacher[]);
   }
 

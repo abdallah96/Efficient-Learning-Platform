@@ -49,13 +49,32 @@ comparePasswords(fb: FormGroup){
   login(formData){
     return this.http.post(this.BaseURI + '/api/Account/AccessToken',formData);
   }
-
-  getCurrentUser(id){
-    // let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    // let options = new RequestOptions({ headers: });
-    console.log(id);
-    return this.http.get(this.BaseURI + '/api/User/GetUserByIdWithRoleAsync/'+ id);
+  
+  getCurrentUser(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+         return this.http.get(this.BaseURI + '/api/User/GetUserWithRole',httpOptions);
   }
+  
+
+  // currentUser(){
+  //   const body={
+  //     email: this.formModel.value.email,
+  //   }
+  //   return this.http.post(this.BaseURI + '/api/User/GetUserByEmailWithRoleAsync',body);
+
+  // }
+  // getCurrentUser(email){
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({'Content-Type': 'application/json'})
+  //   }  
+  //   // let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  //   console.log();
+  //   return this.http.post(this.BaseURI + '/api/User/GetUserByEmailWithRoleAsync',{email}, httpOptions);
+  // }
   // getCurrentUser(email){
   //   var tokenHeader = new HttpHeaders({'Authorization':'Bearer' + localStorage.getItem('token')})
   //   return this.http.get(this.BaseURI + '/api/Account/CurrentUser',{headers: tokenHeader});
