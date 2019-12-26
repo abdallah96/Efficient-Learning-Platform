@@ -1,46 +1,57 @@
+<div class="row">
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Classes</th>    
-            <th>Description</th>
-            <th><button class="btn btn-outline-success" (click)="addClassroomForm()"><i class="fa fa-plus"></i>Create classroom</button></th>
-        </tr>
-    </thead>
-    <tbody>
-       
-            <!-- <tr [formGroup]="fg" *ngFor ="let fg of classroomForms.controls"
-            (submit)="recordSubmit(fg)">
-                <td><select class="form-control" formControlName ="courseId">
-                    <option value="0">Select</option>
-                    <option *ngFor="let item of classroomList" value="{{item.courseId}}">{{item.name}}</option>
-                    </select>
-                </td>
-                <td><input class="form-control" formControlName ="description"></td>
-                <td><button type="submit" class="btn btn-success"
-                    [disabled]="fg.invalid"><i class="fas fa-save fa-lg"(click)="recordSubmit(fg)"></i> Submit</button></td>
-            </tr> -->
-            <tr  *ngFor ="let classroom of classroomForms">
-                <td>
-                    <select class="form-control" [(ngModel)]="classroom.courseId">
-                        <option value="0">Select</option>
-                        <option *ngFor="let item of Course" value="{{item.id}}">{{item.name}}</option>
-                    </select>
-                </td>
-                <td>
-                    <input class="form-control" [(ngModel)]="classroom.description">
-                </td>
-                <td>
-                    <button type="submit" class="btn btn-success" (click)="recordSubmit(classroom)">
-                        <i class="fas fa-save fa-lg"></i> Submit
-                        <!-- {{classroom.get('classroomId').value==0?'Submit':'Update'}} -->
-                    </button>
-                    <button class="btn btn-light ml-1" (click)="onDelete(classroom.get('classroomId').value)">
-                        <i class="far fa-trash-alt fa-lg text-danger"></i>
-                    </button>
-                </td>
-            </tr>
-
+<div class="card col-sm-2" *ngIf="userDetails">
+        <strong>{{userDetails.username}}</strong>
+        <p class="title">{{userDetails.name}}</p>
+        <p>{{userDetails.surname}}</p>
         
-    </tbody>
-</table>
+</div>
+<div class="col-10">
+        <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Classes</th>    
+                        <th>Description</th>
+                        <th><button class="btn btn-outline-success" (click)="addClassroomForm()"><i class="fa fa-plus"></i>Create classroom</button></th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                        <!-- <tr [formGroup]="fg" *ngFor ="let fg of classroomForms.controls"
+                        (submit)="recordSubmit(fg)">
+                            <td><select class="form-control" formControlName ="courseId">
+                                <option value="0">Select</option>
+                                <option *ngFor="let item of classroomList" value="{{item.courseId}}">{{item.name}}</option>
+                                </select>
+                            </td>
+                            <td><input class="form-control" formControlName ="description"></td>
+                            <td><button type="submit" class="btn btn-success"
+                                [disabled]="fg.invalid"><i class="fas fa-save fa-lg"(click)="recordSubmit(fg)"></i> Submit</button></td>
+                        </tr> -->
+                        <tr  *ngFor ="let classroom of classroomForms">
+                            <td>
+                                <select class="form-control" [(ngModel)]="classroom.courseId">
+                                    <option value="0">Select</option>
+                                    <option *ngFor="let item of Course" value="{{item.id}}">{{item.name}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input class="form-control" [(ngModel)]="classroom.description">
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-success" (click)="recordSubmit(classroom)">
+                                    <i class="fas fa-save fa-lg"></i> Submit
+                                    <!-- {{classroom.get('classroomId').value==0?'Submit':'Update'}} -->
+                                </button>
+                                <button class="btn btn-light ml-1" (click)="onDelete(classroom.get('classroomId').value)">
+                                    <i class="far fa-trash-alt fa-lg text-danger"></i>
+                                </button>
+                            </td>
+                        </tr>
+            
+                    
+                </tbody>
+            </table>
+</div>
+
+</div>

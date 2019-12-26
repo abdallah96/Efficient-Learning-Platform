@@ -33,6 +33,7 @@ import { CourseListComponent } from './courses/course-list/course-list.component
 import { CourseService } from './shared/course.service';
 import { ClassroomComponent } from './classroom/classroom.component';
 import { ClassroomService } from './shared/classroom.service';
+import { MystudentComponent } from './teachers/mystudent/mystudent.component';
 
 
 
@@ -56,6 +57,7 @@ import { ClassroomService } from './shared/classroom.service';
     CourseComponent,
     CourseListComponent,
     ClassroomComponent,
+    MystudentComponent,
     
     
   ],
@@ -77,11 +79,12 @@ import { ClassroomService } from './shared/classroom.service';
       {path: 'students',component: StudentsComponent,canActivate:[AuthGuard]},
       {path:'admin', component: AdminComponent,canActivate:[AuthGuard]},
       {path:'course', component: CoursesComponent,canActivate:[AuthGuard]},
-      {path:'classroom', component:ClassroomComponent,canActivate:[AuthGuard]}
+      {path:'classroom', component:ClassroomComponent,canActivate:[AuthGuard]},
+      {path:'mystudents',component:MystudentComponent,canActivate:[AuthGuard]}
 
     ])
   ],
-  providers: [TeacherService,UserService,StudentService, CourseService, ClassroomService, LoginComponent],
+  providers: [TeacherService,UserService,StudentService, CourseService, ClassroomService, LoginComponent,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

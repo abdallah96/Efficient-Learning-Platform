@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Student } from './student.model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ClassroomService {
   readonly rootURL='https://eflearning.azurewebsites.net';
+  list: Student[];
 
   constructor(private http: HttpClient, private toastr: ToastrService ) { }
   
@@ -18,6 +20,15 @@ export class ClassroomService {
       })
     };
     return this.http.get(this.rootURL +'/api/GivenClassroom/GetAll',httpOptions);
+  }
+  getStudents(id){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    return this.http.get(this.rootURL +'/api​/GivenClassroom​/GetStudents​/'+id,httpOptions);
+
   }
 
   postClassroom(formData){
@@ -46,5 +57,6 @@ export class ClassroomService {
     };
     return this.http.delete(this.rootURL +'/api/GivenClassroom/Delete/'+id,httpOptions);
   }
+
  
 }

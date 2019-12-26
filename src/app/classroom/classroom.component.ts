@@ -4,6 +4,7 @@ import { CourseService } from '../shared/course.service';
 import { ClassroomService } from '../shared/classroom.service';
 import { LoginComponent } from '../login/login.component';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-classroom',
@@ -11,16 +12,22 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
   styleUrls: ['./classroom.component.css']
 })
 export class ClassroomComponent implements OnInit {
+  userDetails;
   currentUserDetails = {};
   classroomForms  = [];
   Course = [];
-  constructor(private loginComponent: LoginComponent, private courseService : CourseService, private service:ClassroomService, private toastr: ToastrService) {
+  constructor(private loginComponent: LoginComponent, private courseService : CourseService, private service:ClassroomService, private toastr: ToastrService, private user: UserService) {
     this.currentUserDetails = loginComponent.userDetails;
     console.log(loginComponent);
     console.log(this.currentUserDetails);
   }
 
   ngOnInit() {
+    this.user.getCurrentUser().subscribe(
+      res=>{
+        this.userDetails = res;
+      }
+    );
     this.courseService.getCourseList()
     .subscribe(res => this.Course = res as []);
     this.service.getClassroom().subscribe(
@@ -45,6 +52,12 @@ export class ClassroomComponent implements OnInit {
       courseId: [0],
       description: '',
     });
+  }
+  get(fg: FormGroup){
+    (res:any)=>{
+      fg.patchValue({courseId: res.courseId});
+    }
+
   }
   recordSubmit(classroom:FormGroup) {
     // if(classroom.value.courseId == 0)
