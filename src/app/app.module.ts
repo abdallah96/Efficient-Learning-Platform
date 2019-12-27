@@ -34,6 +34,8 @@ import { CourseService } from './shared/course.service';
 import { ClassroomComponent } from './classroom/classroom.component';
 import { ClassroomService } from './shared/classroom.service';
 import { MystudentComponent } from './teachers/mystudent/mystudent.component';
+import { MaterialsComponent } from './materials/materials.component';
+import { MaterialComponent } from './materials/material/material.component';
 
 
 
@@ -58,6 +60,8 @@ import { MystudentComponent } from './teachers/mystudent/mystudent.component';
     CourseListComponent,
     ClassroomComponent,
     MystudentComponent,
+    MaterialsComponent,
+    MaterialComponent,
     
     
   ],
@@ -80,7 +84,8 @@ import { MystudentComponent } from './teachers/mystudent/mystudent.component';
       {path:'admin', component: AdminComponent,canActivate:[AuthGuard]},
       {path:'course', component: CoursesComponent,canActivate:[AuthGuard]},
       {path:'classroom', component:ClassroomComponent,canActivate:[AuthGuard]},
-      {path:'mystudents',component:MystudentComponent,canActivate:[AuthGuard]}
+      {path:'mystudents',component:MystudentComponent,canActivate:[AuthGuard]},
+      {path:'material',component:MaterialComponent,canActivate:[AuthGuard]}
 
     ])
   ],

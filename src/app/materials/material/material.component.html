@@ -1,0 +1,45 @@
+<form #form ="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <input type="hidden" name="id" value="service.formData.id">
+        <label>Given classroom</label>
+        <div class="form-group">
+                <select class="form-control" [(ngModel)]="service.formData.givenClassroomId">
+                        <option value="0">Select</option>
+                        <option *ngFor="let item of classroom" value="{{item.givenClassroomId}}">{{item.description}}</option>
+                </select>
+            </div>
+           
+        <div class="form-group">
+                <label>Material Type</label>
+                <input type="text" name="materialType" #surname="ngModel" [(ngModel)]="service.formData.materialType" class="form-control" required>      
+                <!-- <div class="validation-error" *ngIf="surname.invalid && surname.touched">This field is required</label> -->
+        </div>
+        <div class="form-group">
+                <label>Material Scale</label>
+                <input type="text" name="materialScale" #surname="ngModel" [(ngModel)]="service.formData.materialScale" class="form-control" required>      
+                <!-- <div class="validation-error" *ngIf="surname.invalid && surname.touched">This field is required</label> -->
+        </div>
+        <div class="form-group">
+                <label>Descritioon</label>
+                <input type="text" name="description" #surname="ngModel" [(ngModel)]="service.formData.description" class="form-control" required>      
+                <!-- <div class="validation-error" *ngIf="surname.invalid && surname.touched">This field is required</label> -->
+        </div>
+        <div class="form-group">
+                <label>Question</label>
+                <input type="text" name="question" #surname="ngModel" [(ngModel)]="service.formData.question" class="form-control" required>      
+                <!-- <div class="validation-error" *ngIf="surname.invalid && surname.touched">This field is required</label> -->
+        </div>
+        <div class="form-group">
+                <label>Hint</label>
+                <input type="text" name="hint" #surname="ngModel" [(ngModel)]="service.formData.hint" class="form-control" required>      
+                <!-- <div class="validation-error" *ngIf="surname.invalid && surname.touched">This field is required</label> -->
+        </div>
+        <div class="form-group">
+                <label>Deadline</label>
+                <input type="date" name="deadline" #surname="ngModel" [(ngModel)]="service.formData.deadline" class="form-control" required>      
+                <!-- <div class="validation-error" *ngIf="surname.invalid && surname.touched">This field is required</label> -->
+        </div>
+        
+        <div class="form-group">
+            <button type="submit"[disabled]="form.invalid" class="btn btn-primary btn-lg btn-block" >SUBMIT</button>
+        </div>
+    </form>

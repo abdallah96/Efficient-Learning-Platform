@@ -28,7 +28,6 @@ export class ClassroomService {
       })
     };
     return this.http.get(this.rootURL +'/api​/GivenClassroom​/GetStudents​/'+id,httpOptions);
-
   }
 
   postClassroom(formData){
