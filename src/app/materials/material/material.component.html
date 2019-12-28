@@ -4,7 +4,7 @@
         <div class="form-group">
                 <select class="form-control" [(ngModel)]="service.formData.givenClassroomId">
                         <option value="0">Select</option>
-                        <option *ngFor="let item of classroom" value="{{item.givenClassroomId}}">{{item.description}}</option>
+                        <option *ngFor="let item of classroom" value="{{item.id}}">{{item.description}}</option>
                 </select>
             </div>
            
