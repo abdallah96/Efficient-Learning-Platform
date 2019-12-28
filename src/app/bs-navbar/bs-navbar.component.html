@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+<nav *ngIf="isLoggedIn$" class="navbar navbar-expand-md navbar-light bg-light fixed-top">
     <a class="navbar-brand" routerLink="/">EL</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -29,7 +29,7 @@
 
         </ul>
       <ul>
-        <button class="btn btn-danger my-2-sm-0" *ngIf="isLoggedIn$" (click)="onLogout()"> logout</button>
+        <button class="btn btn-danger my-2-sm-0" (click)="onLogout()"> logout</button>
       </ul>
 
      

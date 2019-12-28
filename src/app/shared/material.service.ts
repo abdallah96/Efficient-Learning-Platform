@@ -7,16 +7,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class MaterialService {
 formData : Material;
+list: Material[];
 readonly rootURL='https://eflearning.azurewebsites.net';
   constructor(private http: HttpClient) { }
 
-  postMaterial(){
+  postMaterial(formData : MaterialService){
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       })
     };
-    return this.http.post(this.rootURL +'/api/Material/Create', this.formData,httpOptions);
+    return this.http.post(this.rootURL +'/api/Material/Create', formData,httpOptions);
   }
   getClassroom(){
     const httpOptions = {
@@ -25,5 +26,13 @@ readonly rootURL='https://eflearning.azurewebsites.net';
       })
     };
     return this.http.get(this.rootURL +'/api/GivenClassroom/GetAll',httpOptions);
+  }
+  getMaterial(id){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    return this.http.get(this.rootURL +'/api/Material/GetMaterials/'+id,httpOptions);
   }
 }

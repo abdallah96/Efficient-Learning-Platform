@@ -13,8 +13,11 @@ export class BsNavbarComponent implements OnInit {
   
   ngOnInit() {
     setTimeout(() => {
-      console.log(this.router.url);
-      this.isLoggedIn$ = this.router.url == '/login' ? false : true;
+      this.isLoggedIn$ = this.router.url == '/login' || this.router.url == '/register' ? false : true;
+      this.router.events.subscribe((val) => {
+        console.log(val);
+        this.isLoggedIn$ = this.router.url == '/login'  || this.router.url == '/register' ? false : true;
+      });
     }, 10);
   }
 

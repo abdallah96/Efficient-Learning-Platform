@@ -11,12 +11,14 @@ import { ClassroomService } from 'src/app/shared/classroom.service';
 })
 export class MaterialComponent implements OnInit {
 classroom =[];
+materialForms=[];
   constructor(private service: MaterialService, private toastr: ToastrService,private classroomService : ClassroomService) { }
 
   ngOnInit() {
     this.resetForm();
     this.classroomService.getClassroom()
     .subscribe(res => this.classroom = res as []);
+  
   }
   resetForm(form ?: NgForm){
     if(form != null)
@@ -33,12 +35,13 @@ classroom =[];
   }
   onSubmit(form: NgForm){
     // if(this.service.formData.id == 0)
+    console.log(form);
     this.insertRecord(form);
     // else
     // this.updateRecord(form);
   }
   insertRecord(form: NgForm){
-    this.service.postMaterial().subscribe(
+    this.service.postMaterial(form.value).subscribe(
       res=>{
         this.resetForm(form);
         this.toastr.success('Material was created Successfully')

@@ -8,4 +8,14 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'e-learning';
+  isLoggedIn$;
+
+  constructor(private router:Router) {}
+  
+  // ngOnInit() {
+  //   setTimeout(() => {
+  //     console.log(this.router.url);
+  //     this.isLoggedIn$ = this.router.url == '/login' ? false : true;
+  //   }, 10);
+  // }
 }

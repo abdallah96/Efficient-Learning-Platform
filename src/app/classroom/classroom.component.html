@@ -40,10 +40,10 @@
                             </td>
                             <td>
                                 <button type="submit" class="btn btn-success" (click)="recordSubmit(classroom)">
-                                    <i class="fas fa-save fa-lg"></i> Submit
-                                    <!-- {{classroom.get('classroomId').value==0?'Submit':'Update'}} -->
+                                    <i class="fas fa-save fa-lg"></i> 
+                                    {{classroom.id==0?'Submit':'Update'}}
                                 </button>
-                                <button class="btn btn-light ml-1" (click)="onDelete(classroom.get('classroomId').value)">
+                                <button class="btn btn-light ml-1" (click)="onDelete(classroom.id)">
                                     <i class="far fa-trash-alt fa-lg text-danger"></i>
                                 </button>
                             </td>

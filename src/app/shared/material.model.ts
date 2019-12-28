@@ -1,4 +1,5 @@
 export class Material {
+    
     givenClassroomId: Number;
     materialType: Number;
     materialScale: Number;
