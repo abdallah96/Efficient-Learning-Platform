@@ -3,6 +3,7 @@ import { MaterialService } from 'src/app/shared/material.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgForm, Validators } from '@angular/forms';
 import { ClassroomService } from 'src/app/shared/classroom.service';
+import { UserService } from 'src/app/shared/user.service';
 
 @Component({
   selector: 'app-material',
@@ -10,16 +11,28 @@ import { ClassroomService } from 'src/app/shared/classroom.service';
   styleUrls: ['./material.component.css']
 })
 export class MaterialComponent implements OnInit {
+userDetails;
+success;
 classroom =[];
 materialForms=[];
-  constructor(private service: MaterialService, private toastr: ToastrService,private classroomService : ClassroomService) { }
+  constructor(private service: MaterialService, private toastr: ToastrService,private classroomService : ClassroomService,private user: UserService) { }
 
   ngOnInit() {
     this.resetForm();
     this.classroomService.getClassroom()
     .subscribe(res => this.classroom = res as []);
-  
+    this.user.getCurrentUser().subscribe(
+      res=>{
+        this.userDetails = res;
+      }
+    );
+    this.service.UserSuccess()
+    .subscribe(res =>{
+            this.success = res
+    });
+    
   }
+  
   resetForm(form ?: NgForm){
     if(form != null)
     form.resetForm();

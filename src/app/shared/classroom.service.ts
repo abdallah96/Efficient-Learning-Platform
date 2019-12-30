@@ -19,7 +19,7 @@ export class ClassroomService {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       })
     };
-    return this.http.get(this.rootURL +'/api/GivenClassroom/GetAll',httpOptions);
+    return this.http.get(this.rootURL +'/api/GivenClassroom/GetClassrooms',httpOptions);
   }
   getStudents(id){
     const httpOptions = {

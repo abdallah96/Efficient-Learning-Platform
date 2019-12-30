@@ -1,6 +1,17 @@
-<div class="col-md-6">
+<div class="row">
+        <div class="card col-sm-2" *ngIf="userDetails || success">
+                <strong>{{userDetails.username}}</strong>
+                <p class="title">{{userDetails.name}}</p>
+                <p>{{userDetails.surname}}</p>
+                <p>{{userDetails.email}}</p>           
+                <p>{{success}}</p>
+                <ul>
+                    <li class="fas fa-star inline" *ngFor="let item of [].constructor(success); let i=index"></li>
+                </ul>
+                               
+        </div>
+    <div class="col-10">
         <form #form ="ngForm" (submit)="onSubmit(form)" autocomplete="off">
-                <!-- <input type="hidden" name="id" value="service.formData.givenClassroomId "> -->
                 <label>Given classroom</label>
                 <div class="form-group">
                     <select class="form-control" name="givenClassroomId" [(ngModel)]="service.formData.givenClassroomId">
@@ -44,4 +55,6 @@
                     <button type="submit"[disabled]="form.invalid" class="btn btn-primary btn-lg btn-block" >SUBMIT</button>
                 </div>
             </form>
+    </div>
+        
 </div>

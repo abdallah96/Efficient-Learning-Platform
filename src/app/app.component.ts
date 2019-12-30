@@ -18,4 +18,5 @@ export class AppComponent {
   //     this.isLoggedIn$ = this.router.url == '/login' ? false : true;
   //   }, 10);
   // }
+
 }

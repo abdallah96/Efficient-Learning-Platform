@@ -1,1 +1,57 @@
-<p>materials works!</p>
+<div class="row">
+
+        <div class="card col-sm-2" *ngIf="userDetails">
+                <strong>{{userDetails.username}}</strong>
+                <p class="title">{{userDetails.name}}</p>
+                <p>{{userDetails.surname}}</p>
+                <p>{{userDetails.email}}</p>
+        
+                
+        </div>
+        <div class="col-10">
+                <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Material Scale</th>    
+                                <th>Question</th>
+                                <th>Hint</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                  
+                                <tr  *ngFor ="let material of materialForms">
+                                    
+                                    <td>
+                                        <input class="form-control" [(ngModel)]="material.materialScale">
+                                    </td>
+                                    
+                                    <td>
+                                        <input class="form-control" [(ngModel)]="material.Hint">
+                                    </td>
+                                    
+                                    <td>
+                                        <input class="form-control" [(ngModel)]="material.description">
+                                    </td>
+                                    
+                                    <td>
+                                        <input class="form-control" [(ngModel)]="material.description">
+                                    </td>
+                                    <td>
+                                        <button type="submit" class="btn" (click)="UpdateSubmit(material)"
+                                        [ngClass]="(material.id==0)?'btn-success':'btn-outline-dark'">
+                                            <i class="fas fa-save fa-lg"></i> Update
+                                            <!-- {{material.id==0?'Submit':'Update'}} -->
+                                        </button>
+                                        <button class="btn btn-light ml-1" (click)="onDelete(material.id)">
+                                            <i class="far fa-trash-alt fa-lg text-danger"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                    
+                            
+                        </tbody>
+                    </table>
+        </div>
+        
+        </div>

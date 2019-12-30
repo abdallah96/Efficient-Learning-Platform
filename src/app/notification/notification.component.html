@@ -1,0 +1,29 @@
+<div id="myModal" class="modal fade" [ngClass] ="{'show':showModal}" role="dialog" >
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-header">
+                          <div *ngFor="let item of notifications" class="modal-body">
+                                <p >{{item.level}}</p>
+                                <p>{{item.title}}</p>
+                                <p>{{item.programmingType}}</p>
+                          </div>
+                          <div *ngFor="let item of freshMaterial" class="modal-body">
+                                <p >{{item.description}}</p>
+                                <p>{{item.deadline}}</p>
+                          </div>
+                          
+                          
+                        </div>
+                        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger"(click)="showModal=false" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                  
+          </div>
+        </div>
+      </div>
+      <button type="button" class="fas fa-bell" (click)="showModal=true" data-toggle="modal" data-target="#myModal"> Notifications</button>

@@ -58,8 +58,23 @@ comparePasswords(fb: FormGroup){
     };
          return this.http.get(this.BaseURI + '/api/User/GetUserWithRole',httpOptions);
   }
+  freshMaterials(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+         return this.http.get(this.BaseURI + '/api/Material/GetFreshMaterials',httpOptions);
+  }
   
-
+getNotification(){
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+  };
+       return this.http.get(this.BaseURI + '/api/DonePractice/GetNotifications',httpOptions);
+}
   // currentUser(){
   //   const body={
   //     email: this.formModel.value.email,

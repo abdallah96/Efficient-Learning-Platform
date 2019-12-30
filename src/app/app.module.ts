@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import{ReactiveFormsModule} from '@angular/forms'
-import{AngularFontAwesomeModule} from 'angular-font-awesome'
+import{ReactiveFormsModule} from '@angular/forms';
+import{AngularFontAwesomeModule} from 'angular-font-awesome';
 
-
+ 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
@@ -36,6 +36,9 @@ import { ClassroomService } from './shared/classroom.service';
 import { MystudentComponent } from './teachers/mystudent/mystudent.component';
 import { MaterialsComponent } from './materials/materials.component';
 import { MaterialComponent } from './materials/material/material.component';
+import { MaterialAnswerComponent } from './materials/material-answer/material-answer.component';
+import { ScoreListComponent } from './materials/score-list/score-list.component';
+import { NotificationComponent } from './notification/notification.component';
 
 
 
@@ -62,9 +65,13 @@ import { MaterialComponent } from './materials/material/material.component';
     MystudentComponent,
     MaterialsComponent,
     MaterialComponent,
+    MaterialAnswerComponent,
+    ScoreListComponent,
+    NotificationComponent,
     
     
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -85,7 +92,10 @@ import { MaterialComponent } from './materials/material/material.component';
       {path:'course', component: CoursesComponent,canActivate:[AuthGuard]},
       {path:'classroom', component:ClassroomComponent,canActivate:[AuthGuard]},
       {path:'mystudents',component:MystudentComponent,canActivate:[AuthGuard]},
-      {path:'material',component:MaterialComponent,canActivate:[AuthGuard]}
+      {path:'material',component:MaterialComponent,canActivate:[AuthGuard]},
+      {path:'materials',component:MaterialsComponent,canActivate:[AuthGuard]},
+      {path:'materialsAnswer',component:MaterialAnswerComponent,canActivate:[AuthGuard]},
+      {path:'notification',component:NotificationComponent,canActivate:[AuthGuard]},
 
     ])
   ],

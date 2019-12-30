@@ -1,0 +1,20 @@
+<table class="table table-bordered">
+        <thead>
+                <tr>
+                    <th scope="col"> Name</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">UserName</th>
+                    <th scope="col">totalScore</th>
+                </tr>
+        </thead>
+        <tbody>
+                <tr *ngFor="let s of service.list">
+                        <td (click)="updateForm(s)">{{s.name}}</td>
+                        <td (click)="updateForm(s)">{{s.surname}}</td>
+                        <td (click)="updateForm(s)">{{s.username}}</td>
+                        <td (click)="updateForm(s)">{{s.totalScore}}</td>
+                        <td><button class="btn btn-sm btn-outline-danger"(click)="onDelete(s.id)">Delete</button></td>
+                    </tr>
+        </tbody>     
+    </table>
+   

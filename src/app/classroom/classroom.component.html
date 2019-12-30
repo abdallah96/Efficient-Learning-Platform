@@ -4,6 +4,8 @@
         <strong>{{userDetails.username}}</strong>
         <p class="title">{{userDetails.name}}</p>
         <p>{{userDetails.surname}}</p>
+        <p>{{userDetails.email}}</p>
+
         
 </div>
 <div class="col-10">
@@ -39,7 +41,8 @@
                                 <input class="form-control" [(ngModel)]="classroom.description">
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-success" (click)="recordSubmit(classroom)">
+                                <button type="submit" class="btn" (click)="recordSubmit(classroom)"
+                                [ngClass]="(classroom.id==0)?'btn-success':'btn-outline-dark'">
                                     <i class="fas fa-save fa-lg"></i> 
                                     {{classroom.id==0?'Submit':'Update'}}
                                 </button>

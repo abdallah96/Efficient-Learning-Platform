@@ -9,15 +9,19 @@
         <li class="nav-item active">
           <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login">login</a>
-        </li>
+      
         
           <li class="nav-item">
               <a class="nav-link" routerLink="/mystudents">My Students</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" routerLink="/classroom">My classes</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/materials">See Materials</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/materialsAnswer">Create answer</a>
           </li>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -31,6 +35,10 @@
       <ul>
         <button class="btn btn-danger my-2-sm-0" (click)="onLogout()"> logout</button>
       </ul>
+      <ul>
+        <app-notification></app-notification>
+        </ul>
+
 
      
     </div>
