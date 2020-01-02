@@ -9,6 +9,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
  
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CookieService } from 'ngx-cookie-service';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -46,6 +47,9 @@ import { AnnouncementComponent } from './announcement/announcement.component';
 import { ProfileComponent } from './profile/profile.component';
 import { Profile } from 'selenium-webdriver/firefox';
 import { ClassDetailsComponent } from './class-details/class-details.component';
+import { CommentComponent } from './comment/comment.component';
+import { ProfilesComponent } from './profiles/profiles.component';
+import { StdProfileComponent } from './std-profile/std-profile.component';
 
 
 
@@ -79,6 +83,9 @@ import { ClassDetailsComponent } from './class-details/class-details.component';
     AnnouncementComponent,
     ProfileComponent,
     ClassDetailsComponent,
+    CommentComponent,
+    ProfilesComponent,
+    StdProfileComponent,
     
     
   ],
@@ -112,10 +119,11 @@ import { ClassDetailsComponent } from './class-details/class-details.component';
       {path:'announcement',component:AnnouncementComponent,canActivate:[AuthGuard]},
       {path:'profile',component:ProfileComponent,canActivate:[AuthGuard]},
       {path:'classes',component:ClassDetailsComponent,canActivate:[AuthGuard]},
+      {path:'stdProfile',component:StdProfileComponent,canActivate:[AuthGuard]},
 
     ])
   ],
-  providers: [TeacherService,UserService,StudentService, CourseService, ClassroomService, LoginComponent,],
+  providers: [TeacherService,UserService,StudentService,CookieService, CourseService, ClassroomService, LoginComponent,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

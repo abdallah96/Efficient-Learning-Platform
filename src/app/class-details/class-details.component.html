@@ -5,7 +5,7 @@
             <p class="title">{{userDetails.name}}</p>
             <p>{{userDetails.surname}}</p>
             <p>{{userDetails.email}}</p>           
-            <p>{{success}}</p>
+            <p>{{success.total}}</p>
             <ul>
                 <li class="fas fa-star inline" *ngFor="let item of [].constructor(success); let i=index"></li>
             </ul>
@@ -13,13 +13,14 @@
     </div>
     <div class="col-10">
         <div *ngFor="let class of classes">
-            <label>Class: {{class.course}}</label>
+            <h4>Class: {{class.course}}</h4>
             <table class="table table-bordered">
                 <thead>
                     <tr class="list">
                         
                         <th scope="col">Description</th>
                         <th scope="col">Creation Time</th>
+                        <th scope="col">Comments</th>
                         
                     </tr>
                 </thead>
@@ -29,8 +30,6 @@
                     <td>{{announcement.description}}</td>
                     <td>{{announcement.creationTime | date}}</td>
                     <td><button class="btn btn-lg btn-outline-primary" (click)="open()">Comment</button></td>
-                    
-                    
                         
                     </tr>
                 </tbody>     

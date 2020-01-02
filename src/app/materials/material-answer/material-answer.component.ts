@@ -31,7 +31,7 @@ export class MaterialAnswerComponent implements OnInit {
         this.userDetails = res;
       }
     );
-    this.getMaterial();
+    // this.getMaterial();
     this.service.studentSuccess()
     .subscribe(res =>{
             this.userSuccess = res
@@ -73,10 +73,10 @@ export class MaterialAnswerComponent implements OnInit {
       this.toastr.error(err.error+'Failure')  
     })
   }
-  getMaterial(id ?: Number){
-    this.service.getMaterial(id)
-    .subscribe(res => this.material = res as []);
+  // getMaterial(id ?: Number){
+  //   this.service.getMaterial(id)
+  //   .subscribe(res => this.material = res as []);
     
-  }
+  // }
 
 }

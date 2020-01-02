@@ -3,6 +3,7 @@ import { Material } from './material.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MaterialAnswer } from './material-answer.model';
 import { Announcement } from './announcement.model';
+import { GivePoint } from './give-point.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,8 @@ formData : Material;
 announcement : Announcement;
 fd : MaterialAnswer;
 list: Material[];
+comment:Comment;
+point:GivePoint;
 readonly rootURL='https://eflearning.azurewebsites.net';
   constructor(private http: HttpClient) { }
 
@@ -39,14 +42,7 @@ readonly rootURL='https://eflearning.azurewebsites.net';
     };
     return this.http.get(this.rootURL +'/api/GivenClassroom/GetAll',httpOptions);
   }
-  getMaterial(id){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      })
-    };
-    return this.http.get(this.rootURL +'/api/Material/GetMaterials/'+1,httpOptions);
-  }
+ 
   deleteMaterial(id){
     const httpOptions = {
       headers: new HttpHeaders({
@@ -95,6 +91,22 @@ readonly rootURL='https://eflearning.azurewebsites.net';
     };
     return this.http.get(this.rootURL +'/api/Material/GetResponsibleMaterialsCount',httpOptions);
   }
+  doneMaterialCount(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    return this.http.get(this.rootURL +'/api​/MaterialAnswer​/GetDoneMaterialCount',httpOptions);
+  }
+  joinedCount(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    return this.http.get(this.rootURL +'/api/TakenClassroom/GetJoinedCount',httpOptions);
+  }
   getAnnouncement(id){
     const httpOptions = {
       headers: new HttpHeaders({
@@ -102,6 +114,14 @@ readonly rootURL='https://eflearning.azurewebsites.net';
       })
     };
     return this.http.get(this.rootURL +'/api/Announcement/GetAll/'+id,httpOptions);
+  }
+  givePoint(point){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    return this.http.put(this.rootURL +'/api/MaterialAnswer/GivePoint', point,httpOptions);
   }
   
 }

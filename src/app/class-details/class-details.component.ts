@@ -3,6 +3,24 @@ import { UserService } from '../shared/user.service';
 import { ClassroomService } from '../shared/classroom.service';
 import { MaterialService } from '../shared/material.service';
 
+// @Component({
+//   selector: 'ngbd-modal-content',
+//   template: `
+//     <div class="modal-header">
+//       <h4 class="modal-title">Description</h4>
+//       <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+//         <span aria-hidden="true">&times;</span>
+//       </button>
+//     </div>
+//     <div class="modal-body">
+//     <input type="text" name="description" #surname="ngModel" [(ngModel)]="service.comment.description" class="form-control">      
+//     </div>
+//     <div class="modal-footer">
+//     <button type="submit" class="btn btn-primary btn-lg btn-block" >SUBMIT</button>
+//       <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+//     </div>
+//   `
+// })
 @Component({
   selector: 'app-class-details',
   templateUrl: './class-details.component.html',
@@ -21,7 +39,7 @@ export class ClassDetailsComponent implements OnInit {
         this.userDetails = res;
       }
     );
-    this.userSucces.UserSuccess()
+    this.userSucces.studentSuccess()
     .subscribe(res =>{
             this.success = res
     });

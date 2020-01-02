@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../shared/user.service';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'bs-navbar',
@@ -9,7 +11,7 @@ import { UserService } from '../shared/user.service';
 })
 export class BsNavbarComponent implements OnInit {
   isLoggedIn$;
-  constructor(private router:Router, private service: UserService) { }
+  constructor(private router:Router, private service: UserService, private cookieService: CookieService) { }
   
   ngOnInit() {
     setTimeout(() => {

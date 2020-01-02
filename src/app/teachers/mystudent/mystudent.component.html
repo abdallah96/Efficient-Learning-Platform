@@ -1,27 +1,36 @@
 <div class="row">
-        <div class="card col-sm-2" *ngIf="userDetails">
-                <strong>{{userDetails.username}}</strong>
-                <p class="title">{{userDetails.name}}</p>
-                <p>{{userDetails.surname}}</p>
-                
-        </div>
-<div class="col-10">
-        <table class="table table-bordered">
-                <thead>
+    <div class="card col-sm-2" *ngIf="userDetails || success">
+            <i class="fas fa-user fa-10x"></i>        
+            <strong>{{userDetails.username}}</strong>
+            <p class="title">{{userDetails.name}}</p>
+            <p>{{userDetails.surname}}</p>
+            <p>{{userDetails.email}}</p>           
+            <p>{{success}}</p>
+            <ul>
+                <li class="fas fa-star inline" *ngFor="let item of [].constructor(success); let i=index"></li>
+            </ul>                               
+    </div>
+    <div class="col-10">
+            <div *ngFor="let class of classes">
+                <h4>Class: {{class.course}}</h4>
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <th scope="col"> Name</th>
+                          
+                            <th scope="col">Name</th>
                             <th scope="col">Surname</th>
                             <th scope="col">UserName</th>
-            
                         </tr>
-                </thead>
-                <tbody>
-                        <tr *ngFor="let t of service.list">
-                                <td >{{t.name}}</td>
-                                <td >{{t.surname}}</td>
-                                <td (click)="updateForm(t)">{{t.username}}</td>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let score of class.students; let i = index">
+                           
+                            <td>{{score.name}}</td>
+                            <td>{{score.surname}}</td>
+                            <td>{{score.username}}</td>                            
                         </tr>
-                </tbody>
-        </table>
-</div>
+                    </tbody>     
+                </table>
+            </div>
+        </div> 
 </div>

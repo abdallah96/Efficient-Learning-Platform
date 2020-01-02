@@ -83,5 +83,13 @@ getScoreList(id){
   };
        return this.http.get(this.BaseURI + '/api/MaterialAnswer/GetScoreList/'+ id,httpOptions);
 }
+getAllStudents(id){
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+  };
+       return this.http.get(this.BaseURI + '/api/GivenClassroom/GetStudents/'+ id,httpOptions);
+}
 
 }

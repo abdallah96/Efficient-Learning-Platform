@@ -13,61 +13,52 @@ import { Material } from '../shared/material.model';
   styleUrls: ['./materials.component.css']
 })
 export class MaterialsComponent implements OnInit {
-userDetails;
-notifications;
-freshMaterial;
-classroom =[];
-materialForms=[];
+  classes = [];
+  classrooms = [];
+  success;
+  userDetails;
 
   constructor(private service: MaterialService, private toastr: ToastrService,private classroomService : ClassroomService,private user: UserService) { }
 
   ngOnInit() {
-    this.resetForm();
-    this.getMaterial();
     this.user.getCurrentUser().subscribe(
       res=>{
         this.userDetails = res;
       }
     );
-    
-  }
-  resetForm(form ?: NgForm){
-    if(form != null)
-    form.resetForm();
-    this.service.formData ={
-      givenClassroomId: 0,
-      materialType: 0,
-      materialScale: 0,
-      question: '',
-      hint: '',
-      description: '',
-      deadline: new Date()
-    }
-  }
-  recordSubmit(material:Material) {
-    console.log(material);
-      this.service.UpdateMaterial(material).subscribe(
-        res=>{
-        this.toastr.success('Classroom was updated sucessfully'),
-        err =>{
-          console.log(err);
-        }
-        
+    this.service.UserSuccess()
+    .subscribe(res =>{
+            this.success = res
+    });
+      this.classroomService.givenClassroom().subscribe(res => {
+        console.log(res);
+        this.classrooms = res as [];
+        // this.classrooms.forEach(classroom => {
+        //   this.getMaterial(classroom.id, classroom.description);
+        // });
       });
-    }
-    onDelete(id){
-      console.log(id);
-      this.service.deleteMaterial(id).subscribe(res =>{
-        this.toastr.warning('The classroom has been deleted')
-      },
-        err=>{
-          console.log(err)
-        })
-    }
-  getMaterial(id ?: Number){
-    this.service.getMaterial(id)
-    .subscribe(res => this.classroom = res as []);
+    
+    // updateRecord(form:NgForm){
+
+    //   this.service.UpdateCourse().subscribe(
+    //     res=>{
+    //     this.resetForm(form);
+    //     this.toastr.success('Course was updated sucessfully'),
+    //     err =>{
+    //       console.log(err);
+    //     }
+        
+    //   });
+    // }
     
   }
+  
+    // getMaterial() {
+    //   console.log(id);
+    //   this.service.givePoint().subscribe(res => {
+    //     this.toastr.success('Course was updated sucessfully'),
+    //   });
+    // }
+  
 
 }

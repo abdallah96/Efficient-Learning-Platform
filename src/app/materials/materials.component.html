@@ -1,61 +1,41 @@
 <div class="row">
-
         <div class="card col-sm-2" *ngIf="userDetails || success">
-                <i class="fas fa-user fa-10x"></i>        
-                <strong>{{userDetails.username}}</strong>
-                <p class="title">{{userDetails.name}}</p>
-                <p>{{userDetails.surname}}</p>
-                <p>{{userDetails.email}}</p>           
-                <p>{{success}}</p>
-                <ul>
-                    <li class="fas fa-star inline" *ngFor="let item of [].constructor(success); let i=index"></li>
-                </ul>
-                               
+            <i class="fas fa-user fa-10x"></i>        
+            <!-- <strong>{{userDetails.username}}</strong> -->
+            <p class="title">{{userDetails.name}}</p>
+            <p>{{userDetails.surname}}</p>
+            <p>{{userDetails.email}}</p>           
+            <p>{{success}}</p>
+            <ul>
+                <li class="fas fa-star inline" *ngFor="let item of [].constructor(success); let i=index"></li>
+            </ul>              
         </div>
         <div class="col-10">
+            <div *ngFor="let class of classes">
+                <h4>Class: {{class.course}}</h4>
                 <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Material Scale</th>    
-                                <th>Question</th>
-                                <th>Hint</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                  
-                                <tr  *ngFor ="let material of materialForms">
-                                    
-                                    <td>
-                                        <input class="form-control" [(ngModel)]="material.materialScale">
-                                    </td>
-                                    
-                                    <td>
-                                        <input class="form-control" [(ngModel)]="material.Hint">
-                                    </td>
-                                    
-                                    <td>
-                                        <input class="form-control" [(ngModel)]="material.description">
-                                    </td>
-                                    
-                                    <td>
-                                        <input class="form-control" [(ngModel)]="material.description">
-                                    </td>
-                                    <td>
-                                        <button type="submit" class="btn" (click)="UpdateSubmit(material)"
-                                        [ngClass]="(material.id==0)?'btn-success':'btn-outline-dark'">
-                                            <i class="fas fa-save fa-lg"></i> Update
-                                            <!-- {{material.id==0?'Submit':'Update'}} -->
-                                        </button>
-                                        <button class="btn btn-light ml-1" (click)="onDelete(material.id)">
-                                            <i class="far fa-trash-alt fa-lg text-danger"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                    
-                            
-                        </tbody>
-                    </table>
-        </div>
-        
-        </div>
+                    <thead>
+                        <tr>
+                           
+                            <th scope="col">Name</th>
+                            <th scope="col">Surname</th>
+                            <th scope="col">UserName</th>
+                            <th scope="col">Point</th>
+                            <th scope="col">Give Point</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let score of class.points; let i = index">
+                          
+                            <td>{{score.name}}</td>
+                            <td>{{score.surname}}</td>
+                            <td>{{score.username}}</td>
+                            <td>{{score.score}}</td>
+                            <td><button class="btn btn-lg btn-outline-primary" (click)="open()">Comment</button></td>
+                          
+                        </tr>
+                    </tbody>     
+                </table>
+            </div>
+        </div> 
+    </div>
