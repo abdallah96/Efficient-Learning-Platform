@@ -6,6 +6,8 @@ import { LoginComponent } from '../login/login.component';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { UserService } from '../shared/user.service';
 import { Classroom } from '../shared/classroom.model';
+import { Material } from '../shared/material.model';
+import { MaterialService } from '../shared/material.service';
 
 @Component({
   selector: 'app-classroom',
@@ -17,7 +19,8 @@ export class ClassroomComponent implements OnInit {
   currentUserDetails = {};
   classroomForms  = [];
   Course = [];
-  constructor(private loginComponent: LoginComponent, private courseService : CourseService, private service : ClassroomService, private toastr: ToastrService, private user: UserService) {
+  success;
+  constructor(private loginComponent: LoginComponent, private courseService : CourseService, private service : ClassroomService, private toastr: ToastrService, private user: UserService, private succes: MaterialService) {
     this.currentUserDetails = loginComponent.userDetails;
     console.log(loginComponent);
     console.log(this.currentUserDetails);
@@ -29,6 +32,10 @@ export class ClassroomComponent implements OnInit {
         this.userDetails = res;
       }
     );
+    this.succes.UserSuccess()
+    .subscribe(res =>{
+            this.success = res
+    });
     this.courseService.getCourseList()
     .subscribe(res => this.Course = res as []);
     this.service.getClassroom().subscribe(

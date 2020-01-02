@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { Material } from './material.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MaterialAnswer } from './material-answer.model';
+import { Announcement } from './announcement.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MaterialService {
 formData : Material;
+announcement : Announcement;
 fd : MaterialAnswer;
 list: Material[];
 readonly rootURL='https://eflearning.azurewebsites.net';
@@ -76,6 +78,30 @@ readonly rootURL='https://eflearning.azurewebsites.net';
       })
     };
     return this.http.get(this.rootURL +'/api/MaterialAnswer/GetUserSuccess',httpOptions);
+  }
+  studentCount(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    return this.http.get(this.rootURL +'/api/GivenClassroom/GetStudentsCount',httpOptions);
+  }
+  materialCount(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    return this.http.get(this.rootURL +'/api/Material/GetResponsibleMaterialsCount',httpOptions);
+  }
+  getAnnouncement(id){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    return this.http.get(this.rootURL +'/api/Announcement/GetAll/'+id,httpOptions);
   }
   
 }

@@ -56,6 +56,22 @@ export class ClassroomService {
     };
     return this.http.delete(this.rootURL +'/api/GivenClassroom/Delete/'+id,httpOptions);
   }
+  takenClassroom(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    return this.http.get(this.rootURL +'/api/TakenClassroom/GetClassrooms',httpOptions);
+  }
+  givenClassroom(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    return this.http.get(this.rootURL +'/api/GivenClassroom/GetClassrooms',httpOptions);
+  }
 
  
 }

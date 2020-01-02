@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/shared/user.service';
-import { CourseService } from 'src/app/shared/course.service';
-import { ClassroomService } from 'src/app/shared/classroom.service';
-import { MaterialService } from 'src/app/shared/material.service';
+import { UserService } from '../shared/user.service';
+import { ClassroomService } from '../shared/classroom.service';
+import { MaterialService } from '../shared/material.service';
 
 @Component({
-  selector: 'app-score-list',
-  templateUrl: './score-list.component.html',
-  styleUrls: ['./score-list.component.css']
+  selector: 'app-class-details',
+  templateUrl: './class-details.component.html',
+  styleUrls: ['./class-details.component.css']
 })
-export class ScoreListComponent implements OnInit {
+export class ClassDetailsComponent implements OnInit {
   classes = [];
   classrooms = [];
   success;
   userDetails;
-
   constructor( private user : UserService, private service : ClassroomService, private userSucces :MaterialService) { }
 
   ngOnInit() {
@@ -31,7 +29,7 @@ export class ScoreListComponent implements OnInit {
       console.log(res);
       this.classrooms = res as [];
       this.classrooms.forEach(classroom => {
-        this.scoreList(classroom.givenClassroomId, classroom.courseName);
+        this.getAllAnnouncement(classroom.givenClassroomId, classroom.courseName);
       });
     });
     if(this.classrooms.length == 0) {
@@ -39,16 +37,17 @@ export class ScoreListComponent implements OnInit {
         console.log(res);
         this.classrooms = res as [];
         this.classrooms.forEach(classroom => {
-          this.scoreList(classroom.id, classroom.description);
+          this.getAllAnnouncement(classroom.id, classroom.description);
         });
       });
     }
+    
   }
-
-  scoreList(id?:UserService, courseName?:String) {
+  getAllAnnouncement(id?:UserService, courseName?:String) {
     console.log(id);
-    this.user.getScoreList(id).subscribe(res => {
-      this.classes.push({course: courseName, scores: res as []});
+    this.userSucces.getAnnouncement(id).subscribe(res => {
+      this.classes.push({course: courseName, announcements: res as []});
     });
   }
+
 }

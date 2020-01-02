@@ -12,3 +12,49 @@ box-shadow: 0 1px 0 0  #e91e63 !important;
 
     color: #e91e63;
 }
+
+#ngb-popover-0.bs-popover-bottom {
+    left: -60px !important;
+}
+
+#ngb-popover-0.bs-popover-bottom .arrow {
+    left: 160px
+}
+
+.popover-body {
+    padding: 0;
+    width: 200px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.popover-body div.notification {
+    padding: 6px 12px 12px 12px;
+    border-bottom: 1px solid #404040;
+}
+
+.popover-body div.notification:last-child {
+    border-bottom: 0;
+}
+.icons{
+    color: #5584ff;
+}
+.fa-trophy {
+    color: #fd7e14;
+    
+}
+
+.fa-star{
+    color: #5584ff;
+
+}
+.fa-award{
+    color: #fd7e14;
+
+}
+.fa-user{
+    color: #5584ff;
+}
+.list{
+    text-align: center;
+}

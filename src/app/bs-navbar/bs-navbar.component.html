@@ -15,29 +15,38 @@
               <a class="nav-link" routerLink="/mystudents">My Students</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" routerLink="/classroom">My classes</a>
+              <a class="nav-link" routerLink="/classes">My Classes</a>
           </li>
-          <li class="nav-item">
-              <a class="nav-link" routerLink="/materials">See Materials</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" routerLink="/materialsAnswer">Create answer</a>
-          </li>
-        <form class="form-inline my-2 my-lg-0">
+         
+         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
           </form>    
       </ul>
-      <ul>
-          <button class="far fa-plus-square"routerLink="/material" ></button>
-
-        </ul>
-      <ul>
-        <button class="btn btn-danger my-2-sm-0" (click)="onLogout()"> logout</button>
-      </ul>
-      <ul>
-        <app-notification></app-notification>
-        </ul>
+          <ul class="icons">
+              <i class="fas fa-plus-circle fa-2x" placement="bottom" [ngbPopover]="popContent"></i>
+               <ng-template #popContent>      
+                       <a routerLink="material">Create Task</a> <br />
+                       <a routerLink="announcement">Create announcement</a><br/>
+                       <a routerLink="classroom">Create Classroom</a><br/>                     
+                       <a routerLink="score">Score List</a><br/>                     
+                       <a routerLink="joinClass">Join a class</a><br/>                     
+                       <a routerLink="submitTask">Submit Task</a><br/>                     
+               </ng-template>
+            </ul>
+         
+           <ul class="icons">
+             <app-notification></app-notification>
+           </ul>
+           <!-- <ul class="icons">
+               <i class="fas fa-user fa-lg" routerLink="/profile" placement="bottom" [ngbPopover]="popContent"></i>
+                <ng-template #popContent>
+                  <a routerLink="/profile">Profile</a>
+                </ng-template>
+            </ul> -->
+           <ul class="icons">
+               <i class="fas fa-sign-out-alt fa-lg" (click)="onLogout()"></i>
+           </ul>
 
 
      

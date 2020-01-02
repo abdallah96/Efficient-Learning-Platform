@@ -75,23 +75,13 @@ getNotification(){
   };
        return this.http.get(this.BaseURI + '/api/DonePractice/GetNotifications',httpOptions);
 }
-  // currentUser(){
-  //   const body={
-  //     email: this.formModel.value.email,
-  //   }
-  //   return this.http.post(this.BaseURI + '/api/User/GetUserByEmailWithRoleAsync',body);
+getScoreList(id){
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+  };
+       return this.http.get(this.BaseURI + '/api/MaterialAnswer/GetScoreList/'+ id,httpOptions);
+}
 
-  // }
-  // getCurrentUser(email){
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({'Content-Type': 'application/json'})
-  //   }  
-  //   // let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  //   console.log();
-  //   return this.http.post(this.BaseURI + '/api/User/GetUserByEmailWithRoleAsync',{email}, httpOptions);
-  // }
-  // getCurrentUser(email){
-  //   var tokenHeader = new HttpHeaders({'Authorization':'Bearer' + localStorage.getItem('token')})
-  //   return this.http.get(this.BaseURI + '/api/Account/CurrentUser',{headers: tokenHeader});
-  // }
 }

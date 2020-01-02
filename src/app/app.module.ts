@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import{ReactiveFormsModule} from '@angular/forms';
 import{AngularFontAwesomeModule} from 'angular-font-awesome';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
  
 import { AppRoutingModule } from './app-routing.module';
@@ -39,6 +41,11 @@ import { MaterialComponent } from './materials/material/material.component';
 import { MaterialAnswerComponent } from './materials/material-answer/material-answer.component';
 import { ScoreListComponent } from './materials/score-list/score-list.component';
 import { NotificationComponent } from './notification/notification.component';
+import { ScoComponent } from './sco/sco.component';
+import { AnnouncementComponent } from './announcement/announcement.component';
+import { ProfileComponent } from './profile/profile.component';
+import { Profile } from 'selenium-webdriver/firefox';
+import { ClassDetailsComponent } from './class-details/class-details.component';
 
 
 
@@ -68,6 +75,10 @@ import { NotificationComponent } from './notification/notification.component';
     MaterialAnswerComponent,
     ScoreListComponent,
     NotificationComponent,
+    ScoComponent,
+    AnnouncementComponent,
+    ProfileComponent,
+    ClassDetailsComponent,
     
     
   ],
@@ -75,6 +86,7 @@ import { NotificationComponent } from './notification/notification.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgbModule,
     FormsModule,
     AngularFontAwesomeModule,
     HttpClientModule,
@@ -96,6 +108,10 @@ import { NotificationComponent } from './notification/notification.component';
       {path:'materials',component:MaterialsComponent,canActivate:[AuthGuard]},
       {path:'materialsAnswer',component:MaterialAnswerComponent,canActivate:[AuthGuard]},
       {path:'notification',component:NotificationComponent,canActivate:[AuthGuard]},
+      {path:'score',component:ScoreListComponent,canActivate:[AuthGuard]},
+      {path:'announcement',component:AnnouncementComponent,canActivate:[AuthGuard]},
+      {path:'profile',component:ProfileComponent,canActivate:[AuthGuard]},
+      {path:'classes',component:ClassDetailsComponent,canActivate:[AuthGuard]},
 
     ])
   ],

@@ -1,12 +1,14 @@
 <div class="row">
 
-<div class="card col-sm-2" *ngIf="userDetails">
+<div class="card col-sm-2" *ngIf="userDetails || success">
+        <i class="fas fa-user fa-10x"></i>    
         <strong>{{userDetails.username}}</strong>
         <p class="title">{{userDetails.name}}</p>
         <p>{{userDetails.surname}}</p>
         <p>{{userDetails.email}}</p>
-
-        
+        <ul>
+                <li class="fas fa-star inline" *ngFor="let item of [].constructor(success); let i=index"></li>
+            </ul>        
 </div>
 <div class="col-10">
         <table class="table table-bordered">
@@ -41,10 +43,9 @@
                                 <input class="form-control" [(ngModel)]="classroom.description">
                             </td>
                             <td>
-                                <button type="submit" class="btn" (click)="recordSubmit(classroom)"
-                                [ngClass]="(classroom.id==0)?'btn-success':'btn-outline-dark'">
-                                    <i class="fas fa-save fa-lg"></i> 
-                                    {{classroom.id==0?'Submit':'Update'}}
+                                <button type="submit" class="btn btn-success" (click)="recordSubmit(classroom)">
+                                    <i class="fas fa-save fa-lg"></i> Submit
+                                    <!-- {{classroom.id==0?'Submit':'Update'}} -->
                                 </button>
                                 <button class="btn btn-light ml-1" (click)="onDelete(classroom.id)">
                                     <i class="far fa-trash-alt fa-lg text-danger"></i>
