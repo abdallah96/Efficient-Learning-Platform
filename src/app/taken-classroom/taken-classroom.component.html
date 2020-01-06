@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="card col-sm-2" *ngIf="userDetails || success">
+        <i class="fas fa-user fa-10x"></i>        
+        <strong>{{userDetails.username}}</strong>
+        <p class="title">{{userDetails.name}}</p>
+        <p>{{userDetails.surname}}</p>
+        <p>{{userDetails.email}}</p>           
+        <p>{{success}}</p>
+        <ul>
+            <li class="fas fa-star inline" *ngFor="let item of [].constructor(success); let i=index"></li>
+        </ul>           
+    </div>
+    <div class="col-10">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Classroom description</th>
+                    <th scope="col">Created Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let class of classrooms">
+                    <td>{{class.description}}</td>
+                    <td>{{class.creationTime | date}}</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-danger" (click)="joinClass(class.id)">Join</button>
+                    </td>
+                </tr>
+            </tbody>     
+        </table>
+    </div>
+</div>

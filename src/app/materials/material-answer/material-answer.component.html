@@ -18,12 +18,6 @@
                                 <input type="text" name="answer" #name="ngModel" [(ngModel)]="service.fd.answer" class="form-control" required>      
                     
                             </div>
-                            <!-- <div class="form-group">
-                                    <select class="form-control" name="materialId" [(ngModel)]="service.fd.materialId">
-                                            <option value="0">Select</option>
-                                            <option *ngFor="let item of material" value="{{item.id}}">{{item.materialType}}</option>
-                                    </select>
-                            </div> -->
                         <div class="form-group">
                             <button type="submit"[disabled]="form.invalid" class="btn btn-primary btn-lg btn-block" >SUBMIT</button>
                         </div>

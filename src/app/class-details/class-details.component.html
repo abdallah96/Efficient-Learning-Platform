@@ -1,12 +1,11 @@
 <div class="row">
-    <div class="card col-sm-2" *ngIf="userDetails || success">
+    <div class="card col-sm-2">
             <i class="fas fa-user fa-10x"></i>        
-            <strong>{{userDetails.username}}</strong>
-            <p class="title">{{userDetails.name}}</p>
-            <p>{{userDetails.surname}}</p>
-            <p>{{userDetails.email}}</p>           
-            <p>{{success.total}}</p>
-            <ul>
+            <p class="title" *ngIf="userDetails">{{userDetails.name}}</p>
+            <p *ngIf="userDetails">{{userDetails.surname}}</p>
+            <p *ngIf="userDetails">{{userDetails.email}}</p>           
+            <p *ngIf="success">{{success.total}}</p>
+            <ul *ngIf="success">
                 <li class="fas fa-star inline" *ngFor="let item of [].constructor(success); let i=index"></li>
             </ul>
                             
@@ -29,7 +28,9 @@
                       
                     <td>{{announcement.description}}</td>
                     <td>{{announcement.creationTime | date}}</td>
-                    <td><button class="btn btn-lg btn-outline-primary" (click)="open()">Comment</button></td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="setAnnouncementId(announcement.id)">
+                    Comments
+                      </button></td>
                         
                     </tr>
                 </tbody>     
@@ -37,3 +38,4 @@
         </div>
     </div> 
 </div>
+<app-comment></app-comment>

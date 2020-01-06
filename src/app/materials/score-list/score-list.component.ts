@@ -15,7 +15,7 @@ export class ScoreListComponent implements OnInit {
   success;
   userDetails;
 
-  constructor( private user : UserService, private service : ClassroomService, private userSucces :MaterialService) { }
+  constructor( private user : UserService, private service : ClassroomService, private materialService :MaterialService) { }
 
   ngOnInit() {
     this.user.getCurrentUser().subscribe(
@@ -23,7 +23,7 @@ export class ScoreListComponent implements OnInit {
         this.userDetails = res;
       }
     );
-    this.userSucces.UserSuccess()
+    this.materialService.UserSuccess()
     .subscribe(res =>{
             this.success = res
     });
@@ -47,7 +47,7 @@ export class ScoreListComponent implements OnInit {
 
   scoreList(id?:UserService, courseName?:String) {
     console.log(id);
-    this.user.getScoreList(id).subscribe(res => {
+    this.materialService.getScoreList(id).subscribe(res => {
       this.classes.push({course: courseName, scores: res as []});
     });
   }

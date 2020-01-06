@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
         this.service.getCurrentUser().subscribe(
           (res:any) => {
             this.userDetails = res;
+            localStorage.setItem('userDetails',JSON.stringify(res));
             if(res.roleName == 'Teacher') {
               this.router.navigateByUrl('/classroom');
             }

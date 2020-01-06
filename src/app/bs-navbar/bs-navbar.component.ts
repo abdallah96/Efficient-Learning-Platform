@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../shared/user.service';
 import { CookieService } from 'ngx-cookie-service';
+import { ClassroomService } from '../shared/classroom.service';
 
 
 @Component({
@@ -11,7 +12,10 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class BsNavbarComponent implements OnInit {
   isLoggedIn$;
-  constructor(private router:Router, private service: UserService, private cookieService: CookieService) { }
+  userDetails;
+  classrooms = [];
+
+  constructor(private router:Router, private service: UserService, private classroomService: ClassroomService) { }
   
   ngOnInit() {
     setTimeout(() => {
@@ -20,6 +24,8 @@ export class BsNavbarComponent implements OnInit {
         console.log(val);
         this.isLoggedIn$ = this.router.url == '/login'  || this.router.url == '/register' ? false : true;
       });
+      this.userDetails = JSON.parse(localStorage.getItem('userDetails'));
+      console.log(this.userDetails);
     }, 10);
   }
 
@@ -28,4 +34,11 @@ export class BsNavbarComponent implements OnInit {
     this.router.navigate(['/login']);
     this.isLoggedIn$ = false;
   }
+  getByClassroomSearch(){
+    this.classroomService.findClassroom().subscribe(res => {
+      console.log(res);
+      this.classrooms = res as []
+    });
+  }
+  
 }

@@ -1,26 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../shared/user.service';
 import { ClassroomService } from '../shared/classroom.service';
 import { MaterialService } from '../shared/material.service';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-// @Component({
-//   selector: 'ngbd-modal-content',
-//   template: `
-//     <div class="modal-header">
-//       <h4 class="modal-title">Description</h4>
-//       <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-//         <span aria-hidden="true">&times;</span>
-//       </button>
-//     </div>
-//     <div class="modal-body">
-//     <input type="text" name="description" #surname="ngModel" [(ngModel)]="service.comment.description" class="form-control">      
-//     </div>
-//     <div class="modal-footer">
-//     <button type="submit" class="btn btn-primary btn-lg btn-block" >SUBMIT</button>
-//       <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
-//     </div>
-//   `
-// })
+
+
+
 @Component({
   selector: 'app-class-details',
   templateUrl: './class-details.component.html',
@@ -31,7 +17,7 @@ export class ClassDetailsComponent implements OnInit {
   classrooms = [];
   success;
   userDetails;
-  constructor( private user : UserService, private service : ClassroomService, private userSucces :MaterialService) { }
+  constructor( private user : UserService, private service : ClassroomService, private material :MaterialService) { }
 
   ngOnInit() {
     this.user.getCurrentUser().subscribe(
@@ -39,12 +25,11 @@ export class ClassDetailsComponent implements OnInit {
         this.userDetails = res;
       }
     );
-    this.userSucces.studentSuccess()
+    this.material.studentSuccess()
     .subscribe(res =>{
             this.success = res
     });
     this.service.takenClassroom().subscribe(res => {
-      console.log(res);
       this.classrooms = res as [];
       this.classrooms.forEach(classroom => {
         this.getAllAnnouncement(classroom.givenClassroomId, classroom.courseName);
@@ -52,7 +37,6 @@ export class ClassDetailsComponent implements OnInit {
     });
     if(this.classrooms.length == 0) {
       this.service.givenClassroom().subscribe(res => {
-        console.log(res);
         this.classrooms = res as [];
         this.classrooms.forEach(classroom => {
           this.getAllAnnouncement(classroom.id, classroom.description);
@@ -61,11 +45,14 @@ export class ClassDetailsComponent implements OnInit {
     }
     
   }
+  
   getAllAnnouncement(id?:UserService, courseName?:String) {
-    console.log(id);
-    this.userSucces.getAnnouncement(id).subscribe(res => {
+    this.material.getAnnouncement(id).subscribe(res => {
       this.classes.push({course: courseName, announcements: res as []});
     });
   }
 
+  setAnnouncementId(announcementId) {
+    localStorage.setItem('announcementId', JSON.stringify(announcementId));
+  }
 }

@@ -11,7 +11,7 @@
         </li>
       
         
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="userDetails.roleName =='Teacher'">
               <a class="nav-link" routerLink="/mystudents">My Students</a>
           </li>
           <li class="nav-item">
@@ -26,25 +26,27 @@
           <ul class="icons">
               <i class="fas fa-plus-circle fa-2x" placement="bottom" [ngbPopover]="popContent"></i>
                <ng-template #popContent>      
-                       <a routerLink="material">Create Task</a> <br />
-                       <a routerLink="announcement">Create announcement</a><br/>
-                       <a routerLink="classroom">Create Classroom</a><br/>                     
+                       <a routerLink="material" *ngIf="userDetails.roleName =='Teacher'">Create Task</a> <br />
+                       <a routerLink="announcement" *ngIf="userDetails.roleName =='Teacher'">Create announcement</a><br/>
+                       <a routerLink="classroom" *ngIf="userDetails.roleName =='Teacher'">Create Classroom</a><br/>  
+                       <a routerLink="task" *ngIf="userDetails.roleName =='Teacher'">Student Progress</a><br/>  
+
                        <a routerLink="score">Score List</a><br/>                     
-                       <a routerLink="joinClass">Join a class</a><br/>                     
-                       <a routerLink="submitTask">Submit Task</a><br/>                     
+                       <a routerLink="joinClass" *ngIf="userDetails.roleName =='Student'">Join a class</a><br/>                     
+                       <a routerLink="submitTask" *ngIf="userDetails.roleName =='Student'">Submit Task</a><br/>                     
                </ng-template>
             </ul>
-            <ul>
+            <ul *ngIf="userDetails.roleName =='Student'">
                 <i class="fas fa-user fa-lg" placement="bottom" [ngbPopover]="popContents"></i>
                 <ng-template #popContents>
                   <a routerLink="/stdProfile">Profile</a>
                 </ng-template>
             </ul>
          
-           <ul class="icons">
+           <ul class="icons" *ngIf="userDetails.roleName =='Student'">
              <app-notification></app-notification>
            </ul>
-           <ul class="icons">
+           <ul class="icons" *ngIf="userDetails.roleName =='Teacher'">
               <app-profiles></app-profiles>
             </ul>
            <ul class="icons">

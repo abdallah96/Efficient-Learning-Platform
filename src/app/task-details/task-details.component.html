@@ -1,0 +1,52 @@
+<div class="row">
+    <!-- <div class="card col-sm-2" *ngIf="userDetails || success">
+        <i class="fas fa-user fa-10x"></i>        
+        <strong>{{userDetails.username}}</strong>
+        <p class="title">{{userDetails.name}}</p>
+        <p>{{userDetails.surname}}</p>
+        <p>{{userDetails.email}}</p>           
+        <p>{{success.total}}</p>
+        <ul>
+            <li class="fas fa-star inline" *ngFor="let item of [].constructor(success); let i=index"></li>
+        </ul>              
+    </div> -->
+    <div class="row col-10">
+        <div class="form-group col-5">
+            <select class="form-control" name="class" #class="ngModel" [(ngModel)]="classValue" (ngModelChange)="getClassroomMaterials(classValue)">
+                <option value="" disabled>Select Classroom</option>
+                <option *ngFor="let classroom of classrooms" value="{{classroom.id}}">{{classroom.description}}</option>
+            </select>
+        </div>
+        <div class="form-group col-5">
+            <select class="form-control" name="material" #material="ngModel" [(ngModel)]="materialValue">
+                <option value="" disabled>Select Material</option>
+                <option *ngFor="let material of materials" value="{{material.id}}">{{material.question}}</option>
+            </select>
+        </div>
+        <div class="form-group col-5">
+            <button class="btn btn-primary" (click)="getMaterialAnswers(materialValue)">Load Answers</button>
+        </div>
+        <div class="col-12">
+            <h4>Class: {{class.course}}</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="list">
+                        <th scope="col">Student</th>
+                        <th scope="col">Answer</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let answeredMaterial of answeredMaterials">
+                        <td>{{answeredMaterial.name + ' ' + answeredMaterial.surname }}</td>
+                        <td>{{answeredMaterial.answer}}</td>
+                        <td>
+                            <input type="number" class="form-control" name="point" #point="ngModel" [(ngModel)]="pointValue">
+                            <button class="btn btn-primary" (click)="givePoint(pointValue, answeredMaterial.userId)">Give Point</button>
+                        </td>
+                    </tr>
+                </tbody>     
+            </table>
+        </div>
+    </div> 
+</div>

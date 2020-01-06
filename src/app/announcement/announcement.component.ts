@@ -40,7 +40,6 @@ materialForms=[];
     form.resetForm();
     this.service.announcement ={
       givenClassroomId: 0,
-      materialType:'',
       description: '',
     }
   }

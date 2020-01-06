@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Student } from './student.model';
+import { TakenClassroom } from './taken-classroom.model';
+import { Classroom } from './classroom.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +12,8 @@ import { Student } from './student.model';
 export class ClassroomService {
   readonly rootURL='https://eflearning.azurewebsites.net';
   list: Student[];
+  formData: TakenClassroom;
+  classes: Classroom[];
 
   constructor(private http: HttpClient, private toastr: ToastrService ) { }
   
@@ -21,6 +25,15 @@ export class ClassroomService {
     };
     return this.http.get(this.rootURL +'/api/GivenClassroom/GetClassrooms',httpOptions);
   }
+  getAllClassroom(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    return this.http.get(this.rootURL +'/api/GivenClassroom/GetAll',httpOptions);
+  }
+
   getStudents(id){
     const httpOptions = {
       headers: new HttpHeaders({
@@ -37,6 +50,14 @@ export class ClassroomService {
       })
     };
     return this.http.post(this.rootURL +'/api/GivenClassroom/Create', formData,httpOptions);
+  }
+  joinClassroom(formData){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    return this.http.post(this.rootURL +'/api/TakenClassroom/Create', formData,httpOptions);
   }
 
   UpdateClassroom(formData){
@@ -72,6 +93,15 @@ export class ClassroomService {
     };
     return this.http.get(this.rootURL +'/api/GivenClassroom/GetClassrooms',httpOptions);
   }
+  findClassroom(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+    return this.http.get(this.rootURL +'/api​/GivenClassroom​/FindAClassroom​/',httpOptions);
+  }
+  
 
  
 }

@@ -50,6 +50,8 @@ import { ClassDetailsComponent } from './class-details/class-details.component';
 import { CommentComponent } from './comment/comment.component';
 import { ProfilesComponent } from './profiles/profiles.component';
 import { StdProfileComponent } from './std-profile/std-profile.component';
+import { TakenClassroomComponent } from './taken-classroom/taken-classroom.component';
+import { TaskDetailsComponent } from './task-details/task-details.component';
 
 
 
@@ -86,6 +88,8 @@ import { StdProfileComponent } from './std-profile/std-profile.component';
     CommentComponent,
     ProfilesComponent,
     StdProfileComponent,
+    TakenClassroomComponent,
+    TaskDetailsComponent,
     
     
   ],
@@ -120,6 +124,8 @@ import { StdProfileComponent } from './std-profile/std-profile.component';
       {path:'profile',component:ProfileComponent,canActivate:[AuthGuard]},
       {path:'classes',component:ClassDetailsComponent,canActivate:[AuthGuard]},
       {path:'stdProfile',component:StdProfileComponent,canActivate:[AuthGuard]},
+      {path:'joinClass',component:TakenClassroomComponent,canActivate:[AuthGuard]},
+      {path:'task',component:TaskDetailsComponent,canActivate:[AuthGuard]},
 
     ])
   ],
