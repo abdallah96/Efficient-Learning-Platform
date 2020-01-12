@@ -16,6 +16,7 @@
                     <tr>
                         <th>Classes</th>    
                         <th>Description</th>
+                        <th>Content</th>
                         <th><button class="btn btn-outline-success" (click)="addClassroomForm()"><i class="fa fa-plus"></i>Create classroom</button></th>
                     </tr>
                 </thead>
@@ -41,6 +42,9 @@
                             </td>
                             <td>
                                 <input class="form-control" [(ngModel)]="classroom.description">
+                            </td>
+                            <td>
+                                <input class="form-control" [(ngModel)]="classroom.content">
                             </td>
                             <td>
                                 <button type="submit" class="btn btn-success" (click)="recordSubmit(classroom)">

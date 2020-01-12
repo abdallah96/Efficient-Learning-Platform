@@ -10,7 +10,10 @@
         <form #form ="ngForm" autocomplete="off">
             <div class="modal-body">
                 <div>
-                    <p *ngFor="let comment of comments; trackBy:identify">{{comment.description}}</p>
+                    <p *ngFor="let comment of comments; trackBy:identify">
+                      {{comment.description}} <br>
+                      {{comment.user}}
+                    </p>
                 </div>
                 <div class="form-group">
                     <label>Description</label>

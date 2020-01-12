@@ -11,10 +11,12 @@ import { UserService } from 'src/app/shared/user.service';
   styleUrls: ['./material.component.css']
 })
 export class MaterialComponent implements OnInit {
-userDetails;
-success;
-classroom =[];
-materialForms=[];
+  userDetails;
+  success;
+  questionText;
+  classroom =[];
+  materialForms=[];
+
   constructor(private service: MaterialService, private toastr: ToastrService,private classroomService : ClassroomService,private user: UserService) { }
 
   ngOnInit() {
@@ -31,6 +33,11 @@ materialForms=[];
             this.success = res
     });
     
+  }
+
+  addQuestion() {
+    this.service.formData.question = this.service.formData.question + " " + this.questionText;
+    this.questionText = "";
   }
   
   resetForm(form ?: NgForm){

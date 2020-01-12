@@ -5,6 +5,7 @@ import { UserService } from '../shared/user.service';
 import { NgForm } from '@angular/forms';
 import { Announcement } from '../shared/announcement.model';
 import { CommentService } from '../shared/comment.service';
+import { StudentService } from '../shared/student.service';
 
 @Component({
   selector: 'app-comment',
@@ -15,12 +16,14 @@ export class CommentComponent implements OnInit {
   comments = [];
   selectedAnnouncementId;
   displayComments = false;
+  users;
 
-  constructor(private comment: CommentService) { }
+  constructor(private comment: CommentService, private studentService: StudentService) { }
 
   ngOnInit() {
     let thisComponent = this;
     this.resetForm();
+    this.studentService.GetAllStudents();
     
     $('#exampleModal').on('show.bs.modal', function() {
       thisComponent.selectedAnnouncementId = localStorage.getItem('announcementId');
@@ -60,6 +63,9 @@ export class CommentComponent implements OnInit {
   getComments(id?:Number) {
     this.comment.getComments(id).subscribe(res => {
       this.comments = res as [];
+      this.comments.forEach(comment => {
+        comment.user = this.studentService.list.find(student => student.id == comment.userId);
+      });
     });
   }
 }

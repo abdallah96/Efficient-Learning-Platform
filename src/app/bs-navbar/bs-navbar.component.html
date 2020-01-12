@@ -14,8 +14,12 @@
           <li class="nav-item" *ngIf="userDetails.roleName =='Teacher'">
               <a class="nav-link" routerLink="/mystudents">My Students</a>
           </li>
+          <li class="nav-item" *ngIf="userDetails.roleName =='Student'">
+              <button class="nav-link" (click)="practice()"></button>
+          </li>
+
           <li class="nav-item">
-              <a class="nav-link" routerLink="/classes">My Classes</a>
+              <a class="nav-link" routerLink="/classes">My Classes </a>
           </li>
          
          <form class="form-inline my-2 my-lg-0">

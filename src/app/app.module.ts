@@ -52,6 +52,7 @@ import { ProfilesComponent } from './profiles/profiles.component';
 import { StdProfileComponent } from './std-profile/std-profile.component';
 import { TakenClassroomComponent } from './taken-classroom/taken-classroom.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
+import { PythonEditorComponent } from './python-editor/python-editor.component';
 
 
 
@@ -90,6 +91,7 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
     StdProfileComponent,
     TakenClassroomComponent,
     TaskDetailsComponent,
+    PythonEditorComponent,
     
     
   ],
@@ -126,6 +128,7 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
       {path:'stdProfile',component:StdProfileComponent,canActivate:[AuthGuard]},
       {path:'joinClass',component:TakenClassroomComponent,canActivate:[AuthGuard]},
       {path:'task',component:TaskDetailsComponent,canActivate:[AuthGuard]},
+      {path:'editor',component:PythonEditorComponent,canActivate:[AuthGuard]},
 
     ])
   ],

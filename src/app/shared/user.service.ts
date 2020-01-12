@@ -73,7 +73,7 @@ getNotification(){
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     })
   };
-       return this.http.get(this.BaseURI + '/api/DonePractice/GetNotifications',httpOptions);
+       return this.http.get(this.BaseURI + '/api/Common/GetNotifications',httpOptions);
 }
 getAllStudents(id){
   const httpOptions = {

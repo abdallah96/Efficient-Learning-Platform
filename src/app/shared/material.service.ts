@@ -19,12 +19,13 @@ point:GivePoint;
 readonly rootURL='https://eflearning.azurewebsites.net';
   constructor(private http: HttpClient) { }
 
-  postMaterial(formData : MaterialService){
+  postMaterial(formData){
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       })
     };
+    console.log(formData);
     return this.http.post(this.rootURL +'/api/Material/Create', formData,httpOptions);
   }
   postMaterialAnswer(fd){
@@ -75,7 +76,7 @@ readonly rootURL='https://eflearning.azurewebsites.net';
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       })
     };
-    return this.http.get(this.rootURL +'/api/MaterialAnswer/GetUserSuccess',httpOptions);
+    return this.http.get(this.rootURL +'/api/Common/GetUserSuccess',httpOptions);
   }
   studentCount(){
     const httpOptions = {
