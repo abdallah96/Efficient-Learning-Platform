@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../shared/user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ClassroomService } from '../shared/classroom.service';
 import { Location } from '@angular/common';
+import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
+import {Observable, Subject, merge} from 'rxjs';
+import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/operators';
 
 
 @Component({
@@ -12,10 +15,16 @@ import { Location } from '@angular/common';
   styleUrls: ['./bs-navbar.component.css']
 })
 export class BsNavbarComponent implements OnInit {
+  // model: any;
   isLoggedIn$;
   userDetails;
   classrooms = [];
+  searchTerms;
 
+  // @ViewChild('instance', {static: true}) instance: NgbTypeahead;
+  // focus$ = new Subject<string>();
+  // click$ = new Subject<string>();
+  
   constructor(private router:Router, private service: UserService, private classroomService: ClassroomService, private location: Location) { }
   
   ngOnInit() {
@@ -36,14 +45,23 @@ export class BsNavbarComponent implements OnInit {
     this.isLoggedIn$ = false;
   }
   
-  getByClassroomSearch(){
-    this.classroomService.findClassroom().subscribe(res => {
-      console.log(res);
-      this.classrooms = res as []
+  getByClassroomSearch(searchValue){
+    searchValue = searchValue ? searchValue : "etrxytjyljgj";
+    this.classroomService.findClassroom(searchValue).subscribe(res => {
+      this.classrooms = res as [];
+      
     });
   }
-  practice(){
-    this.location.replaceState('src/app//practice/index.html')
-  }
+  // search = (text$: Observable<string>) => {
+  //   const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
+  //   const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
+  //   const inputFocus$ = this.focus$;
+
+  //   return this.classroomService.findClassroom(this.model).subscribe(res => {
+  //         console.log(this.model);
+  //          this.classrooms = res as [];
+  //   });
+  
+  
   
 }

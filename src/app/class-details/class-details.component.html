@@ -6,7 +6,7 @@
             <p *ngIf="userDetails">{{userDetails.email}}</p>           
             <p *ngIf="success">{{success.total}}</p>
             <ul *ngIf="success">
-                <li class="fas fa-star inline" *ngFor="let item of [].constructor(success); let i=index"></li>
+                <li class="fas fa-star inline" *ngFor="let item of [].constructor(success.star); let i=index"></li>
             </ul>
                             
     </div>

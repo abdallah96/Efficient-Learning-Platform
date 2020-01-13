@@ -31,9 +31,9 @@ export class ClassroomComponent implements OnInit {
         this.userDetails = res;
       }
     );
-    this.materialService.UserSuccess().subscribe(
+    this.materialService.studentSuccess().subscribe(
       res =>{
-        this.success = res
+        this.success = res;
     });
     this.courseService.getCourseList()
     .subscribe(res => this.Course = res as []);

@@ -14,6 +14,7 @@ export class ClassroomService {
   list: Student[];
   formData: TakenClassroom;
   classes: Classroom[];
+  searchValue;
 
   constructor(private http: HttpClient, private toastr: ToastrService ) { }
   
@@ -93,13 +94,13 @@ export class ClassroomService {
     };
     return this.http.get(this.rootURL +'/api/GivenClassroom/GetClassrooms',httpOptions);
   }
-  findClassroom(){
+  findClassroom(searchValue){
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       })
     };
-    return this.http.get(this.rootURL +'/api​/GivenClassroom​/FindAClassroom​/',httpOptions);
+    return this.http.get(this.rootURL +'/api/GivenClassroom/FindAClassroom/'+ searchValue,httpOptions);
   }
   
 

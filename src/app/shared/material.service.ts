@@ -68,7 +68,7 @@ readonly rootURL='https://eflearning.azurewebsites.net';
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       })
     };
-    return this.http.get(this.rootURL +'/api/GivenClassroom/GetOwnCount',httpOptions);
+    return this.http.get(this.rootURL +'/api/Common/GetUserSuccess',httpOptions);
   }
   studentSuccess(){
     const httpOptions = {

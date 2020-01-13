@@ -2,13 +2,13 @@
 
 <i class="fas fa-bell fa-2x" placement="bottom" [ngbPopover]="popContent"></i>
 <ng-template #popContent>
-    <div class="notification" *ngFor="let item of freshMaterial">
+    <!-- <div class="notification" *ngFor="let item of freshMaterial">
         <span>{{item.creationTime | date}}</span> <br />
         <span>{{item.description}}</span> <br />
-    </div>
+    </div> -->
     <div class="notification" *ngFor="let item of notifications">
-        <span>{{item.title}}</span> <br /> <!--item.creationTime-->
-        <span>{{item.title}}</span> <br /> <!--item.user-->
-        <span>{{item.title}}</span> <br />
+        <span>{{item.message}}</span> <br /> <!--item.creationTime-->
+        <span>{{item.date | date}}</span> <br /> <!--item.user-->
+        <!-- <span>{{item.message}}</span> <br /> -->
     </div>
 </ng-template>

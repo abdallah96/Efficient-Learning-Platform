@@ -25,8 +25,9 @@ export class TakenClassroomComponent implements OnInit {
       this.userDetails = res;
     });
 
-    this.materialService.UserSuccess().subscribe(res => {
-      this.success = res;
+    this.materialService.studentSuccess().subscribe(
+      res =>{
+        this.success = res;
     });
   }
   

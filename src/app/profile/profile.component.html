@@ -5,7 +5,7 @@
             <p class="title">{{userDetails.name}}</p>
             <p>{{userDetails.surname}}</p>
             <p>{{userDetails.email}}</p>           
-            <p>{{success}}</p>
+            <p>{{success.total}}</p>
             <ul>
                 <li class="fas fa-star inline" *ngFor="let item of [].constructor(success); let i=index"></li>
             </ul>              
@@ -16,7 +16,7 @@
                 <div class="col-4">
                     <h1 *ngIf="success">{{success}}</h1>
                     <p>Given Classes</p>
-                    <p><ngb-progressbar type="success" value="${{success}}">{{success}}</ngb-progressbar></p>
+                    <p><ngb-progressbar type="success" value="${{success}}">{{success.total}}</ngb-progressbar></p>
                 </div>
                 <div class="col-4">
                     <h1 *ngIf="stdCount">{{stdCount}}</h1>

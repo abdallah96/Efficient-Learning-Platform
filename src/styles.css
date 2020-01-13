@@ -58,3 +58,20 @@ box-shadow: 0 1px 0 0  #e91e63 !important;
 .list{
     text-align: center;
 }
+
+.navbar-search-typeahead {
+    border: 1px solid #404040;
+    border-radius: 5px;
+    position: absolute;
+    background-color: #fff;
+    max-height: 350px;
+    overflow-x: auto;
+    overflow-y: auto;
+    top: 53px;
+    left: 300px;
+}
+
+.navbar-search-typeahead-value {
+    padding: 7px;
+    border-bottom: 1px solid #eaeaea;
+}

@@ -15,17 +15,22 @@
               <a class="nav-link" routerLink="/mystudents">My Students</a>
           </li>
           <li class="nav-item" *ngIf="userDetails.roleName =='Student'">
-              <button class="nav-link" (click)="practice()"></button>
+              <a class="nav-link" (click)="practice()">do practice</a>
           </li>
 
           <li class="nav-item">
               <a class="nav-link" routerLink="/classes">My Classes </a>
           </li>
          
-         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+         <form class="form-inline my-2 my-lg-0" >
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="classrooms" [(ngModel)]="searchTerms" (ngModelChange)="getByClassroomSearch(searchTerms)" autocomplete="off">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-          </form>    
+          </form>
+          <div class="navbar-search-typeahead">
+            <div class="navbar-search-typeahead-value" *ngFor="let classroom of classrooms">
+              {{classroom.description}}
+            </div>
+          </div>
       </ul>
           <ul class="icons">
               <i class="fas fa-plus-circle fa-2x" placement="bottom" [ngbPopover]="popContent"></i>
